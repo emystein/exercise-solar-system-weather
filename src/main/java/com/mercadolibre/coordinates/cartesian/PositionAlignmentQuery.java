@@ -1,4 +1,4 @@
-package com.mercadolibre.geometry;
+package com.mercadolibre.coordinates.cartesian;
 
 import java.util.Collection;
 

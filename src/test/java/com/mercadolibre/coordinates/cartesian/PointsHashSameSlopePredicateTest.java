@@ -1,4 +1,4 @@
-package com.mercadolibre.geometry;
+package com.mercadolibre.coordinates.cartesian;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.geometry.PointsHasSameSlopePredicate;
+import com.mercadolibre.coordinates.cartesian.PointsHasSameSlopePredicate;
 
 public class PointsHashSameSlopePredicateTest {
 	private Point2D origin = createPoint(0, 0);

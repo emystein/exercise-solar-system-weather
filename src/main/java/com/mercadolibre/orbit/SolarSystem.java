@@ -4,10 +4,10 @@ import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mercadolibre.geometry.PointIsInsideTrianglePredicate;
-import com.mercadolibre.geometry.PointsHasSameSlopePredicate;
-import com.mercadolibre.geometry.Position;
-import com.mercadolibre.geometry.PositionAlignmentQuery;
+import com.mercadolibre.coordinates.cartesian.PointIsInsideTrianglePredicate;
+import com.mercadolibre.coordinates.cartesian.PointsHasSameSlopePredicate;
+import com.mercadolibre.coordinates.cartesian.Position;
+import com.mercadolibre.coordinates.cartesian.PositionAlignmentQuery;
 
 public class SolarSystem {
 

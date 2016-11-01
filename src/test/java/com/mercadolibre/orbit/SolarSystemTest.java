@@ -12,7 +12,7 @@ import java.awt.geom.Point2D;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.geometry.Position;
+import com.mercadolibre.coordinates.cartesian.Position;
 
 public class SolarSystemTest {
 	private static final double PRECISION = 0.0174d;

@@ -1,4 +1,4 @@
-package com.mercadolibre.geometry;
+package com.mercadolibre.coordinates.cartesian;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,8 +6,8 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.mercadolibre.geometry.Position;
-import com.mercadolibre.geometry.PositionAlignmentQuery;
+import com.mercadolibre.coordinates.cartesian.Position;
+import com.mercadolibre.coordinates.cartesian.PositionAlignmentQuery;
 
 public class PositionAlignmentQueryTest {
 
