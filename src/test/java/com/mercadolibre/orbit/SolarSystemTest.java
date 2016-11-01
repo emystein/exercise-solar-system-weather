@@ -6,12 +6,14 @@ import static org.junit.Assert.assertThat;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 public class SolarSystemTest {
+	private static final double PRECISION = 0.0001d;
 	private Orbit ferengiOrbit = new Orbit(500, -1);
 	private Orbit betasoideOrbit = new Orbit(2000, -3);
-	private Orbit vulcanoOrbit = new Orbit(1000, 1);
+	private Orbit vulcanoOrbit = new Orbit(1000, 5);
 
 	@Test
 	public void whenCreatingASolarSystemPositionOfOrbitsShould0AndDistanceToSun() throws Exception {
@@ -51,6 +53,49 @@ public class SolarSystemTest {
 		Point2D expectedPoint = getNewPointAfterMovingOrbit(orbit, oldPoint);
 		
 		assertThat(solarSystem.positionOf(orbit), is(expectedPoint));
+	}
+
+	@Test
+	public void whenAdvancing90DaysThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
+		Orbit orbit = ferengiOrbit;
+		
+		SolarSystem solarSystem = new SolarSystem(orbit);
+		Point2D oldPoint = solarSystem.positionOf(orbit);
+		
+		// exercise
+		for (int day = 1; day <= 90; day++) {
+			solarSystem.advanceOneDay();
+		}
+		
+		// verify
+		Point2D expectedPoint = new Point2D.Double(oldPoint.getY(), -oldPoint.getX());
+		
+		assertPoint(solarSystem, orbit, expectedPoint);
+	}
+
+	@Test
+	public void whenAdvancing18DaysThenVulcanoOrbitShouldBeIn90Degrees() throws Exception {
+		Orbit orbit = vulcanoOrbit;
+		
+		SolarSystem solarSystem = new SolarSystem(orbit);
+		Point2D oldPoint = solarSystem.positionOf(orbit);
+		
+		// exercise
+		for (int day = 1; day <= 18; day++) {
+			solarSystem.advanceOneDay();
+		}
+		
+		// verify
+		Point2D expectedPoint = new Point2D.Double(oldPoint.getY(), oldPoint.getX());
+		
+		assertPoint(solarSystem, orbit, expectedPoint);
+
+	}
+
+	private void assertPoint(SolarSystem solarSystem, Orbit orbit, Point2D expectedPoint) {
+		Point2D newPoint = solarSystem.positionOf(orbit);
+		assertThat(newPoint.getX(), is(Matchers.closeTo(expectedPoint.getX(), PRECISION)));
+		assertThat(newPoint.getY(), is(Matchers.closeTo(expectedPoint.getY(), PRECISION)));
 	}
 
 	private Point2D getNewPointAfterMovingOrbit(Orbit orbit, Point2D oldPoint) {

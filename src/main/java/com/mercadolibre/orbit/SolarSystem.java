@@ -42,8 +42,9 @@ public class SolarSystem {
 	// TODO: move to Orbit together with orbit's position?
 	private Double movePointUsingAngularSpeed(Orbit orbit, Point2D point) {
 		double atan2 = Math.atan2(point.getY(), point.getX());
-		double newX = orbit.getDistanceToSun() * Math.cos(atan2 + orbit.getAngularSpeedPerDay());
-		double newY = point.getY() + (orbit.getDistanceToSun() * Math.sin(atan2 + orbit.getAngularSpeedPerDay()));
+		double newAngle = atan2 + orbit.getAngularSpeedPerDay();
+		double newX = orbit.getDistanceToSun() * Math.cos(newAngle);
+		double newY = orbit.getDistanceToSun() * Math.sin(newAngle);
 		return new Point2D.Double(newX, newY);
 	}
 
