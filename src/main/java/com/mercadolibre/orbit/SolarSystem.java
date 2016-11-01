@@ -1,14 +1,12 @@
 package com.mercadolibre.orbit;
 
-import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SolarSystem {
 
 	private Orbit[] orbits;
-	private Map<Orbit, Point2D> positions = new HashMap<>();
+	private Map<Orbit, Position> positions = new HashMap<>();
 
 	public SolarSystem(Orbit...orbits) {
 		this.orbits = orbits;
@@ -19,33 +17,42 @@ public class SolarSystem {
 	}
 
 	private void addPosition(Orbit orbit) {
-		positions.put(orbit, new Point2D.Double(orbit.getDistanceToSun(), 0));
+		Position position = new Position(orbit.getDistanceToSun(), 0);
+		positions.put(orbit, position);
 	}
 
 	public Orbit[] getOrbits() {
 		return orbits;
 	}
 
-	public Point2D positionOf(Orbit orbit) {
+	public Position positionOf(Orbit orbit) {
 		return positions.get(orbit);
 	}
 
 	// TODO: move to SolarTime class?
 	public void advanceOneDay() {
 		for (Orbit orbit : orbits) {
-			Point2D currentPointOfOrbit = positions.get(orbit);
-			Point2D newPoint = movePointUsingAngularSpeed(orbit, currentPointOfOrbit);
+			Position currentPointOfOrbit = positions.get(orbit);
+			Position newPoint = movePointUsingAngularSpeed(orbit, currentPointOfOrbit);
 			positions.put(orbit, newPoint);
 		}
 	}
 
 	// TODO: move to Orbit together with orbit's position?
-	private Double movePointUsingAngularSpeed(Orbit orbit, Point2D point) {
-		double atan2 = Math.atan2(point.getY(), point.getX());
-		double newAngle = atan2 + orbit.getAngularSpeedPerDay();
-		double newX = orbit.getDistanceToSun() * Math.cos(newAngle);
-		double newY = orbit.getDistanceToSun() * Math.sin(newAngle);
-		return new Point2D.Double(newX, newY);
+	private Position movePointUsingAngularSpeed(Orbit orbit, Position position) {
+		return new Position(position.getRadians() + orbit.getAngularSpeedPerDay());
 	}
 
+	public boolean orbitsAreAligned() {
+		Orbit initialOrbit = orbits[0];
+		double initialTan = Math.tan(positions.get(initialOrbit).getRadians());
+		
+		boolean result = true;
+		
+		for (Orbit orbit : orbits) {
+			result = result && (Math.tan(positions.get(orbit).getRadians()) == initialTan); 
+		}
+		
+		return result;
+	}
 }

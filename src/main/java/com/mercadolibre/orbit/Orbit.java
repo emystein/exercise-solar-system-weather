@@ -2,9 +2,6 @@ package com.mercadolibre.orbit;
 
 public class Orbit {
 
-	// 2 Pi rad / 1 day (in seconds)
-	private static double radsPerDay = Math.PI * 2 / 86400;
-	
 	private int distanceToSun;
 	private double angularSpeed;
 
