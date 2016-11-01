@@ -45,7 +45,7 @@ public class SolarSystem {
 		return new Position(position.getRadians() + orbit.getAngularSpeedPerDay());
 	}
 
-	public boolean orbitsAreAligned() {
+	public boolean orbitsAreAlignedToTheSun() {
 		return PositionAlignmentQuery.positionsAreAligned(positions.values());
 	}
 	
@@ -62,6 +62,6 @@ public class SolarSystem {
 		Point2D p2 = positions.get(orbits[1]).getPoint();
 		Point2D p3 = positions.get(orbits[2]).getPoint();
 		
-		return !orbitsAreAligned() && PointsWithTheSameSlopePredicate.evaluate(p1, p2, p3);
+		return !orbitsAreAlignedToTheSun() && PointsWithTheSameSlopePredicate.evaluate(p1, p2, p3);
 	}
 }

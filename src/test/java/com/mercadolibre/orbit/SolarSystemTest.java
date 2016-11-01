@@ -108,7 +108,7 @@ public class SolarSystemTest {
 	public void whenCreatingASolarSystemPlanetsShouldBeAligned() throws Exception {
 		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
 
-		assertTrue(solarSystem.orbitsAreAligned());
+		assertTrue(solarSystem.orbitsAreAlignedToTheSun());
 	}
 	
 	@Test
