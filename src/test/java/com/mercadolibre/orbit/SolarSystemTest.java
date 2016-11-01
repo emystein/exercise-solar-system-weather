@@ -39,8 +39,8 @@ public class SolarSystemTest {
 		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
-		solarSystem.advanceOneDay();
-
+		solarSystem.advanceDays(1);
+		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(-1));
 		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
@@ -53,10 +53,8 @@ public class SolarSystemTest {
 		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
-		for (int day = 1; day <= 90; day++) {
-			solarSystem.advanceOneDay();
-		}
-
+		solarSystem.advanceDays(90);
+		
 		// verify
 		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
 		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
@@ -69,7 +67,7 @@ public class SolarSystemTest {
 		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
-		solarSystem.advanceOneDay();
+		solarSystem.advanceDays(1);
 
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(5));
@@ -83,10 +81,8 @@ public class SolarSystemTest {
 		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
-		for (int day = 1; day <= 270; day++) {
-			solarSystem.advanceOneDay();
-		}
-
+		solarSystem.advanceDays(270);
+		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
 		assertThat(orbit.getRadians(), is(closeTo(expectedPosition.getRadians(), PRECISION)));
@@ -99,15 +95,21 @@ public class SolarSystemTest {
 		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
-		for (int day = 1; day <= 18; day++) {
-			solarSystem.advanceOneDay();
-		}
-
+		solarSystem.advanceDays(18);
+		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
 		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
 
+	@Test
+	public void advanceTenYears() throws Exception {
+		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+		SolarSystem solarSystem = new SolarSystem(orbits);
+		solarSystem.advanceDays(3650);
+	}
+
+	
 	@Test
 	public void whenCreatingASolarSystemPlanetsShouldBeAligned() throws Exception {
 		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
