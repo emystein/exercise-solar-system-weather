@@ -118,6 +118,13 @@ public class SolarSystemTest {
 		assertFalse(solarSystem.isRaining());
 	}
 
+	@Test
+	public void whenCreatingASolarSystemShouldNotExistOptimalConditionsOfPreasureaAndTemperature() throws Exception {
+		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		assertFalse(solarSystem.optimalConditionsOfPreasureAndTemperature());
+	}
+	
 	private void assertPoint(SolarSystem solarSystem, Orbit orbit, Point2D expectedPoint) {
 		Point2D newPoint = solarSystem.positionOf(orbit).getPoint();
 		assertThat(newPoint.getX(), is(Matchers.closeTo(expectedPoint.getX(), PRECISION)));
