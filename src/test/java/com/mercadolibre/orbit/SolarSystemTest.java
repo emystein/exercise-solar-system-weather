@@ -2,6 +2,7 @@ package com.mercadolibre.orbit;
 
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -110,7 +111,13 @@ public class SolarSystemTest {
 		assertTrue(solarSystem.orbitsAreAligned());
 	}
 	
-	
+	@Test
+	public void whenCreatingASolarSystemShouldNotRain() throws Exception {
+		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		assertFalse(solarSystem.isRaining());
+	}
+
 	private void assertPoint(SolarSystem solarSystem, Orbit orbit, Point2D expectedPoint) {
 		Point2D newPoint = solarSystem.positionOf(orbit).getPoint();
 		assertThat(newPoint.getX(), is(Matchers.closeTo(expectedPoint.getX(), PRECISION)));

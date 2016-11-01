@@ -1,5 +1,6 @@
 package com.mercadolibre.orbit;
 
+import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ public class SolarSystem {
 
 	private Orbit[] orbits;
 	private Map<Orbit, Position> positions = new HashMap<>();
+	private Point2D pointOfTheSun = new Point2D.Double(0, 0);
 
 	public SolarSystem(Orbit...orbits) {
 		this.orbits = orbits;
@@ -45,5 +47,13 @@ public class SolarSystem {
 
 	public boolean orbitsAreAligned() {
 		return PositionAlignmentQuery.positionsAreAligned(positions.values());
+	}
+	
+	public boolean isRaining() {
+		Point2D p1 = positions.get(orbits[0]).getPoint();
+		Point2D p2 = positions.get(orbits[1]).getPoint();
+		Point2D p3 = positions.get(orbits[2]).getPoint();
+		
+		return PointInsideTrianglePredicate.evaluate(pointOfTheSun, p1, p2, p3);
 	}
 }
