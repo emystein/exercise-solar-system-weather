@@ -1,10 +1,13 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.geometry;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.mercadolibre.geometry.Position;
+import com.mercadolibre.geometry.PositionAlignmentQuery;
 
 public class PositionAlignmentQueryTest {
 

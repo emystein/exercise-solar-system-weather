@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.geometry;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;

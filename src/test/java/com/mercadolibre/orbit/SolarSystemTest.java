@@ -12,6 +12,8 @@ import java.awt.geom.Point2D;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import com.mercadolibre.geometry.Position;
+
 public class SolarSystemTest {
 	private static final double PRECISION = 0.0174d;
 	private Orbit ferengiOrbit = new Orbit(500, -1);

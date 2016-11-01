@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.geometry;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.awt.geom.Point2D;
 
 import org.junit.Test;
+
+import com.mercadolibre.geometry.PointInsideTrianglePredicate;
 
 public class PointInsideTrianglePredicateTest {
 	Point2D zero = createPoint(0, 0);

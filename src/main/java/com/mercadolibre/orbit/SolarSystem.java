@@ -4,6 +4,11 @@ import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mercadolibre.geometry.PointInsideTrianglePredicate;
+import com.mercadolibre.geometry.PointsWithTheSameSlopePredicate;
+import com.mercadolibre.geometry.Position;
+import com.mercadolibre.geometry.PositionAlignmentQuery;
+
 public class SolarSystem {
 
 	private Orbit[] orbits;

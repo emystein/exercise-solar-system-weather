@@ -1,10 +1,12 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.geometry;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
+
+import com.mercadolibre.geometry.Position;
 
 public class RadianPositionTest {
 	double revolution = Math.PI * 2;
