@@ -1,4 +1,4 @@
-package com.mercadolibre.coordinates.cartesian;
+package com.mercadolibre.coordinates.position;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.coordinates.cartesian.Position;
+import com.mercadolibre.coordinates.position.Position;
 
 public class RadianPositionTest {
 	double revolution = Math.PI * 2;

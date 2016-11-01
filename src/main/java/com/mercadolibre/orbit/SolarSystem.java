@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.mercadolibre.coordinates.cartesian.PointIsInsideTrianglePredicate;
 import com.mercadolibre.coordinates.cartesian.PointsHasSameSlopePredicate;
-import com.mercadolibre.coordinates.cartesian.Position;
-import com.mercadolibre.coordinates.cartesian.PositionAlignmentQuery;
+import com.mercadolibre.coordinates.position.Position;
+import com.mercadolibre.coordinates.position.PositionAlignmentQuery;
 
 public class SolarSystem {
 
@@ -24,7 +24,7 @@ public class SolarSystem {
 	}
 
 	private void addPosition(Orbit orbit) {
-		Position position = new Position(0, orbit.getDistanceToSun(), 0);
+		Position position = new Position(orbit.getDistanceToSun(), 0);
 		positions.put(orbit, position);
 	}
 
@@ -55,17 +55,17 @@ public class SolarSystem {
 	}
 	
 	public boolean isRaining() {
-		Point2D p1 = positions.get(orbits[0]).getPoint();
-		Point2D p2 = positions.get(orbits[1]).getPoint();
-		Point2D p3 = positions.get(orbits[2]).getPoint();
+		Point2D p1 = positions.get(orbits[0]).getCoordinates();
+		Point2D p2 = positions.get(orbits[1]).getCoordinates();
+		Point2D p3 = positions.get(orbits[2]).getCoordinates();
 		
 		return PointIsInsideTrianglePredicate.evaluate(pointOfTheSun, p1, p2, p3);
 	}
 
 	public boolean optimalConditionsOfPreasureAndTemperature() {
-		Point2D p1 = positions.get(orbits[0]).getPoint();
-		Point2D p2 = positions.get(orbits[1]).getPoint();
-		Point2D p3 = positions.get(orbits[2]).getPoint();
+		Point2D p1 = positions.get(orbits[0]).getCoordinates();
+		Point2D p2 = positions.get(orbits[1]).getCoordinates();
+		Point2D p3 = positions.get(orbits[2]).getCoordinates();
 		
 		return !orbitsAreAlignedToTheSun() && PointsHasSameSlopePredicate.evaluate(p1, p2, p3);
 	}

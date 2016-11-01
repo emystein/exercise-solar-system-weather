@@ -1,4 +1,4 @@
-package com.mercadolibre.coordinates.cartesian;
+package com.mercadolibre.coordinates.position;
 
 import java.util.Collection;
 

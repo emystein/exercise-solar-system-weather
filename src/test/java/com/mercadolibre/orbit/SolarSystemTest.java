@@ -12,7 +12,7 @@ import java.awt.geom.Point2D;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.coordinates.cartesian.Position;
+import com.mercadolibre.coordinates.position.Position;
 
 public class SolarSystemTest {
 	private static final double PRECISION = 0.0174d;
@@ -24,9 +24,9 @@ public class SolarSystemTest {
 	public void whenCreatingASolarSystemPositionOfOrbitsShould0AndDistanceToSun() throws Exception {
 		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
 		
-		assertThat(solarSystem.positionOf(ferengiOrbit).getPoint(), is(new Point(500, 0))); 
-		assertThat(solarSystem.positionOf(betasoideOrbit).getPoint(), is(new Point(2000, 0))); 
-		assertThat(solarSystem.positionOf(vulcanoOrbit).getPoint(), is(new Point(1000, 0))); 
+		assertThat(solarSystem.positionOf(ferengiOrbit).getCoordinates(), is(new Point(500, 0))); 
+		assertThat(solarSystem.positionOf(betasoideOrbit).getCoordinates(), is(new Point(2000, 0))); 
+		assertThat(solarSystem.positionOf(vulcanoOrbit).getCoordinates(), is(new Point(1000, 0))); 
 	}
 	
 	@Test
@@ -128,7 +128,7 @@ public class SolarSystemTest {
 	}
 	
 	private void assertPoint(SolarSystem solarSystem, Orbit orbit, Point2D expectedPoint) {
-		Point2D newPoint = solarSystem.positionOf(orbit).getPoint();
+		Point2D newPoint = solarSystem.positionOf(orbit).getCoordinates();
 		assertThat(newPoint.getX(), is(Matchers.closeTo(expectedPoint.getX(), PRECISION)));
 		assertThat(newPoint.getY(), is(Matchers.closeTo(expectedPoint.getY(), PRECISION)));
 	}
