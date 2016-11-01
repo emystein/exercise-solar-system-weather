@@ -9,7 +9,8 @@ public class Position {
 	private Double point;
 	private double radians;
 
-	public Position(double x, double y) {
+	public Position(double radians, double x, double y) {
+		this(radians);
 		point = new Point2D.Double(x, y);
 	}
 

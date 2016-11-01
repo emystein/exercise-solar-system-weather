@@ -2,9 +2,10 @@ package com.mercadolibre.orbit;
 
 import java.util.Collection;
 
+// TODO: rename to PositionAlignmentPredicate (rename test too)
 public class PositionAlignmentQuery {
 	// 1 degree = 0.0174 rads
-	private static final double PRECISION = 0.0174d;
+	private static final double ONE_DEGREE_RADIANS_PRECISION = 0.0174d;
 
 	public static boolean positionsAreAligned(Collection<Position> positions) {
 		double initialRadians = moveToFirstQuadrant(positions.iterator().next().getRadians());
@@ -26,6 +27,6 @@ public class PositionAlignmentQuery {
 	}
 
 	private static boolean roundedTanMatches(double currentRadians, double initialTan) {
-		return Math.abs((Math.tan(currentRadians) - initialTan)) <= PRECISION;
+		return Math.abs((Math.tan(currentRadians) - initialTan)) <= ONE_DEGREE_RADIANS_PRECISION;
 	}
 }

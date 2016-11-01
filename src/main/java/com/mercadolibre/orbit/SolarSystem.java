@@ -17,7 +17,7 @@ public class SolarSystem {
 	}
 
 	private void addPosition(Orbit orbit) {
-		Position position = new Position(orbit.getDistanceToSun(), 0);
+		Position position = new Position(0, orbit.getDistanceToSun(), 0);
 		positions.put(orbit, position);
 	}
 

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-public class PositionTest {
+public class RadianPositionTest {
 	double revolution = Math.PI * 2;
 
 	@Test
