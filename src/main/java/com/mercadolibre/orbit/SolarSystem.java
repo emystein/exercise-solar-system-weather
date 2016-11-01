@@ -44,15 +44,6 @@ public class SolarSystem {
 	}
 
 	public boolean orbitsAreAligned() {
-		Orbit initialOrbit = orbits[0];
-		double initialTan = Math.tan(positions.get(initialOrbit).getRadians());
-		
-		boolean result = true;
-		
-		for (Orbit orbit : orbits) {
-			result = result && (Math.tan(positions.get(orbit).getRadians()) == initialTan); 
-		}
-		
-		return result;
+		return PositionAlignmentQuery.positionsAreAligned(positions.values());
 	}
 }
