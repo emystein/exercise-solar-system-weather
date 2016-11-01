@@ -8,7 +8,16 @@ import org.junit.Test;
 public class OrbitTest {
 
 	@Test
-	public void createOrbit() throws Exception {
+	public void createOrbitWithClockwiseAngularSpeed() throws Exception {
+		int traslationAnglePerDay = -1;
+		Orbit ferengiOrbit = new Orbit(500, traslationAnglePerDay);
+		
+		assertThat(ferengiOrbit.getDistanceToSun(), is(500));
+		assertThat(ferengiOrbit.getAngularSpeedPerDay(), is(Math.toRadians(traslationAnglePerDay)));
+	}
+
+	@Test
+	public void createOrbitWithAnticlockwiseSpeed() throws Exception {
 		int traslationAnglePerDay = 1;
 		Orbit ferengiOrbit = new Orbit(500, traslationAnglePerDay);
 		

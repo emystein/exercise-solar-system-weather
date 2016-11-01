@@ -30,14 +30,16 @@ public class SolarSystem {
 		return positions.get(orbit);
 	}
 
+	// TODO: move to SolarTime class?
 	public void advanceOneDay() {
 		for (Orbit orbit : orbits) {
-			Point2D point = positions.get(orbit);
-			Point2D newPoint = movePointUsingAngularSpeed(orbit, point);
+			Point2D currentPointOfOrbit = positions.get(orbit);
+			Point2D newPoint = movePointUsingAngularSpeed(orbit, currentPointOfOrbit);
 			positions.put(orbit, newPoint);
 		}
 	}
 
+	// TODO: move to Orbit together with orbit's position?
 	private Double movePointUsingAngularSpeed(Orbit orbit, Point2D point) {
 		double atan2 = Math.atan2(point.getY(), point.getX());
 		double newX = orbit.getDistanceToSun() * Math.cos(atan2 + orbit.getAngularSpeedPerDay());
