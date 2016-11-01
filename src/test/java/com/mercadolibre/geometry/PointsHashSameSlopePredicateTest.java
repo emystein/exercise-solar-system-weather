@@ -7,9 +7,9 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.geometry.PointsWithTheSameSlopePredicate;
+import com.mercadolibre.geometry.PointsHasSameSlopePredicate;
 
-public class PointsWithTheSameSlopePredicateTest {
+public class PointsHashSameSlopePredicateTest {
 	private Point2D origin = createPoint(0, 0);
 
 	@Test
@@ -17,7 +17,7 @@ public class PointsWithTheSameSlopePredicateTest {
 		Point2D x1y1 = createPoint(1, 1);
 		Point2D x2y2 = createPoint(2, 2);
 		
-		assertTrue(PointsWithTheSameSlopePredicate.evaluate(origin, x1y1, x2y2));
+		assertTrue(PointsHasSameSlopePredicate.evaluate(origin, x1y1, x2y2));
 	}
 
 	@Test
@@ -25,7 +25,7 @@ public class PointsWithTheSameSlopePredicateTest {
 		Point2D x1y1 = createPoint(1, 1);
 		Point2D x2y1 = createPoint(2, 1);
 		
-		assertFalse(PointsWithTheSameSlopePredicate.evaluate(origin, x1y1, x2y1));
+		assertFalse(PointsHasSameSlopePredicate.evaluate(origin, x1y1, x2y1));
 	}
 
 	

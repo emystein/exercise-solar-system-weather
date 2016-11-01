@@ -4,8 +4,8 @@ import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mercadolibre.geometry.PointInsideTrianglePredicate;
-import com.mercadolibre.geometry.PointsWithTheSameSlopePredicate;
+import com.mercadolibre.geometry.PointIsInsideTrianglePredicate;
+import com.mercadolibre.geometry.PointsHasSameSlopePredicate;
 import com.mercadolibre.geometry.Position;
 import com.mercadolibre.geometry.PositionAlignmentQuery;
 
@@ -59,7 +59,7 @@ public class SolarSystem {
 		Point2D p2 = positions.get(orbits[1]).getPoint();
 		Point2D p3 = positions.get(orbits[2]).getPoint();
 		
-		return PointInsideTrianglePredicate.evaluate(pointOfTheSun, p1, p2, p3);
+		return PointIsInsideTrianglePredicate.evaluate(pointOfTheSun, p1, p2, p3);
 	}
 
 	public boolean optimalConditionsOfPreasureAndTemperature() {
@@ -67,6 +67,6 @@ public class SolarSystem {
 		Point2D p2 = positions.get(orbits[1]).getPoint();
 		Point2D p3 = positions.get(orbits[2]).getPoint();
 		
-		return !orbitsAreAlignedToTheSun() && PointsWithTheSameSlopePredicate.evaluate(p1, p2, p3);
+		return !orbitsAreAlignedToTheSun() && PointsHasSameSlopePredicate.evaluate(p1, p2, p3);
 	}
 }

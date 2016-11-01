@@ -7,9 +7,9 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.geometry.PointInsideTrianglePredicate;
+import com.mercadolibre.geometry.PointIsInsideTrianglePredicate;
 
-public class PointInsideTrianglePredicateTest {
+public class PointIsInsideTrianglePredicateTest {
 	Point2D zero = createPoint(0, 0);
 
 	@Test
@@ -18,7 +18,7 @@ public class PointInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(-4, 2); 
 		Point2D p3 = createPoint(-4, -5);
 		
-		assertTrue(PointInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertTrue(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class PointInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(0, 4); 
 		Point2D p3 = createPoint(-3, 3);
 		
-		assertFalse(PointInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertFalse(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
 	}
 
 	private Point2D createPoint(int x, int y) {
@@ -40,7 +40,7 @@ public class PointInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(1000, 0); 
 		Point2D p3 = createPoint(2000, 0);
 		
-		assertFalse(PointInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertFalse(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
 	}
 
 }

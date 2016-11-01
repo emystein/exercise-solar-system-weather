@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
  * @author emenendez
  *
  */
-public class PointInsideTrianglePredicate {
+public class PointIsInsideTrianglePredicate {
 
 	public static boolean evaluate(Point2D point, Point2D triangleVertex1, Point2D triangleVertex2, Point2D triangleVertex3) {
 		if (noPairOfPointsInTheSameLine(point, triangleVertex1, triangleVertex2, triangleVertex3)) {

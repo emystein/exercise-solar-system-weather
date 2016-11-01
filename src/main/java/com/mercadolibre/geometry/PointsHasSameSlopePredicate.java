@@ -2,7 +2,7 @@ package com.mercadolibre.geometry;
 
 import java.awt.geom.Point2D;
 
-public class PointsWithTheSameSlopePredicate {
+public class PointsHasSameSlopePredicate {
 
 	public static boolean evaluate(Point2D p1, Point2D p2, Point2D p3) {
 		double slopeP1P2 = slope(p1, p2);
