@@ -1,6 +1,9 @@
 package com.mercadolibre.galaxy.weather.report;
 
+import java.util.Optional;
+
 import com.mercadolibre.galaxy.SolarSystem;
+import com.mercadolibre.galaxy.event.NullSolarSystemEvent;
 import com.mercadolibre.galaxy.event.SolarSystemEvent;
 import com.mercadolibre.galaxy.event.observer.LastRegisteredEventObserver;
 
@@ -16,6 +19,9 @@ public class WeatherQuery {
 
 	public SolarSystemEvent getWeather(int day) {
 		this.solarSystem.advanceDays(day);
-		return this.solarSystemObserver.getLastRegisteredEvent();
+		// @formatter:off
+		return Optional.ofNullable(this.solarSystemObserver.getLastRegisteredEvent())
+				.orElse(new NullSolarSystemEvent(day));
+		// @formatter:on
 	}
 }
