@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.google.common.collect.Lists;
 import com.mercadolibre.galaxy.event.SolarSystemObserver;
+import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
 import com.mercadolibre.galaxy.weather.report.WeatherQuery;
 
@@ -31,7 +32,7 @@ public class ApplicationConfig {
 	}
 
 	@Bean
-	public WeatherQuery weatherQuery(SolarSystem solarSystem) {
-		return new WeatherQuery(solarSystem);
+	public WeatherQuery weatherQuery(SolarSystem solarSystem, SolarSystemEventCollector eventCollector) {
+		return new WeatherQuery(solarSystem, eventCollector);
 	}
 }

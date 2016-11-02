@@ -6,10 +6,11 @@ import java.util.Collection;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 
+import com.mercadolibre.galaxy.event.SolarSystemObserver;
 import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
+import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
 import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
 import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;
-import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
 import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
 
 public class SolarSystemTestSupport {
@@ -21,7 +22,7 @@ public class SolarSystemTestSupport {
 	
 	protected SolarSystem solarSystem;
 
-	protected SolarSystemEventCollector eventCollector;
+	protected SolarSystemEventCollector eventCollector = new SolarSystemEventCollector();
 
 	@Before
 	public void setUp() throws Exception {
@@ -30,8 +31,8 @@ public class SolarSystemTestSupport {
 		weatherAnalysisPredicates.add(new IsRainingPredicate());
 		weatherAnalysisPredicates.add(new OptimalPreasureAndTemperaturePredicate());
 
-		solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates);
-		eventCollector = new SolarSystemEventCollector();
-		solarSystem.registerObserver(eventCollector);
+		Collection<SolarSystemObserver> observers = Lists.newArrayList(eventCollector);
+		
+		solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates, observers);
 	}
 }

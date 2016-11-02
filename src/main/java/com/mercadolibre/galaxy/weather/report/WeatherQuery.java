@@ -1,29 +1,32 @@
 package com.mercadolibre.galaxy.weather.report;
 
-import java.util.Optional;
+import java.util.List;
 
 import com.mercadolibre.galaxy.SolarSystem;
 import com.mercadolibre.galaxy.event.NullSolarSystemEvent;
 import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.observer.LastRegisteredEventObserver;
-
+import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
 
 public class WeatherQuery {
 
 	private SolarSystem solarSystem;
-	private LastRegisteredEventObserver solarSystemObserver = new LastRegisteredEventObserver();
+	private SolarSystemEventCollector eventCollector;
 
-	public WeatherQuery(SolarSystem solarSystem) {
+	public WeatherQuery(SolarSystem solarSystem, SolarSystemEventCollector eventCollector) {
 		this.solarSystem = solarSystem;
-		this.solarSystem.registerObserver(solarSystemObserver);
+		this.eventCollector = eventCollector;
+		this.solarSystem.registerObserver(eventCollector);
 	}
 
-	public SolarSystemEvent getWeather(int day) {
+	public synchronized SolarSystemEvent getWeather(int day) {
 		this.solarSystem.advanceDays(day);
 
-		// @formatter:off
-		return Optional.ofNullable(this.solarSystemObserver.getLastRegisteredEvent())
-				.orElse(new NullSolarSystemEvent(day));
-		// @formatter:on
+		List<SolarSystemEvent> events = this.eventCollector.getEvents();
+
+		if (!events.isEmpty()) {
+			return events.get(events.size() - 1);
+		} else {
+			return new NullSolarSystemEvent(day);
+		}
 	}
 }

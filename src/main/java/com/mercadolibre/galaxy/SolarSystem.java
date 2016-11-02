@@ -27,12 +27,14 @@ public class SolarSystem {
 	}
 
 	public void registerObserver(SolarSystemObserver observer) {
-		observers.add(observer);
+		if (!this.observers.contains(observer)) {
+			this.observers.add(observer);
+		}
 	}
 
 	public void advanceDays(int numberOfDays) {
 		for (int day = 1; day <= numberOfDays; day++) {
-			for (Orbit orbit : orbits) {
+			for (Orbit orbit : this.orbits) {
 				orbit.moveDays(1);
 			}
 			this.generateEvents(day);
@@ -40,8 +42,8 @@ public class SolarSystem {
 	}
 
 	private void generateEvents(int day) {
-		for (SolarSystemPredicate predicate : weatherAnalysisPredicates) {
-			if (predicate.matches(orbits)) {
+		for (SolarSystemPredicate predicate : this.weatherAnalysisPredicates) {
+			if (predicate.matches(this.orbits)) {
 				SolarSystemEvent event = new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue());
 				notifyObservers(event);
 			}
@@ -49,7 +51,7 @@ public class SolarSystem {
 	}
 
 	private void notifyObservers(SolarSystemEvent event) {
-		for (SolarSystemObserver observer : observers) {
+		for (SolarSystemObserver observer : this.observers) {
 			observer.notify(event);
 		}
 	}
