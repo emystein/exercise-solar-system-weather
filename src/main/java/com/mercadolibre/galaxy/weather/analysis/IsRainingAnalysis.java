@@ -14,16 +14,16 @@ import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
 @Component
 @Scope("request")
-public class IsRainingPredicate extends SolarSystemPredicate {
+public class IsRainingAnalysis extends SolarSystemAnalysis {
 
 	private double rainArea;
 
-	public IsRainingPredicate() {
+	public IsRainingAnalysis() {
 		super(SolarSystemEventType.RAIN);
 	}
 
 	@Override
-	public boolean matches(Collection<Orbit> orbits) {
+	boolean matches(Collection<Orbit> orbits) {
 		Point2D pointOfTheSun = new Point2D.Double(0, 0);
 
 		Iterator<Orbit> iterator = orbits.iterator();
@@ -37,7 +37,7 @@ public class IsRainingPredicate extends SolarSystemPredicate {
 		return rainArea > 0d && PointIsInsideTrianglePredicate.matches(pointOfTheSun, point1, point2, point3);
 	}
 
-	public double getValue() {
+	double getValue() {
 		return rainArea;
 	}
 

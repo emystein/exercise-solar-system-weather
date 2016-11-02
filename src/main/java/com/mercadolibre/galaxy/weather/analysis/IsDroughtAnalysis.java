@@ -10,9 +10,9 @@ import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
 @Component
 @Scope("request")
-public class IsDroughtPredicate extends SolarSystemPredicate {
+public class IsDroughtAnalysis extends SolarSystemAnalysis {
 
-	public IsDroughtPredicate() {
+	public IsDroughtAnalysis() {
 		super(SolarSystemEventType.DROUGHT);
 	}
 

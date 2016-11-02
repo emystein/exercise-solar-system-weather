@@ -13,9 +13,9 @@ import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
 @Component
 @Scope("request")
-public class OptimalPreasureAndTemperaturePredicate extends SolarSystemPredicate {
+public class OptimalPreasureAndTemperatureAnalysis extends SolarSystemAnalysis {
 
-	public OptimalPreasureAndTemperaturePredicate() {
+	public OptimalPreasureAndTemperatureAnalysis() {
 		super(SolarSystemEventType.OPTIMAL_PREASSURE_AND_TEMPERATURE);
 	}
 

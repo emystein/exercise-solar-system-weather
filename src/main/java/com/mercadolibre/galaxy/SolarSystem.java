@@ -5,16 +5,16 @@ import java.util.Collection;
 
 import com.mercadolibre.galaxy.event.SolarSystemEvent;
 import com.mercadolibre.galaxy.event.SolarSystemObserver;
-import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
+import com.mercadolibre.galaxy.weather.analysis.SolarSystemAnalysis;
 
 public class SolarSystem {
 	private Collection<Orbit> orbits;
-	private Collection<SolarSystemPredicate> weatherAnalysisPredicates = new ArrayList<>();
+	private Collection<SolarSystemAnalysis> weatherAnalysis = new ArrayList<>();
 	private Collection<SolarSystemObserver> observers = new ArrayList<>();
 	
-	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemPredicate> weatherAnalysisPredicates) {
+	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemAnalysis> weatherAnalysisPredicates) {
 		this.orbits = orbits;
-		this.weatherAnalysisPredicates = weatherAnalysisPredicates;
+		this.weatherAnalysis = weatherAnalysisPredicates;
 	}
 
 	public void registerObserver(SolarSystemObserver observer) {
@@ -31,10 +31,9 @@ public class SolarSystem {
 	}
 
 	private void analyzeWeather(int day) {
-		for (SolarSystemPredicate predicate : this.weatherAnalysisPredicates) {
-			if (predicate.matches(this.orbits)) {
-				notifyObservers(new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue()));
-			}
+		for (SolarSystemAnalysis analysis : this.weatherAnalysis) {
+			SolarSystemEvent event = analysis.analyze(this.orbits, day);
+			notifyObservers(event);
 		}
 	}
 

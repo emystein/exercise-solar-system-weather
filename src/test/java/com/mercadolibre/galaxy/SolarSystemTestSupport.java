@@ -8,10 +8,10 @@ import org.junit.Before;
 
 import com.mercadolibre.galaxy.event.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.event.SolarSystemObserver;
-import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
-import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
-import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;
-import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
+import com.mercadolibre.galaxy.weather.analysis.IsDroughtAnalysis;
+import com.mercadolibre.galaxy.weather.analysis.IsRainingAnalysis;
+import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperatureAnalysis;
+import com.mercadolibre.galaxy.weather.analysis.SolarSystemAnalysis;
 
 public class SolarSystemTestSupport {
 	protected Orbit ferengiOrbit = new Orbit(500, -1);
@@ -26,10 +26,10 @@ public class SolarSystemTestSupport {
 
 	@Before
 	public void setUp() throws Exception {
-		Collection<SolarSystemPredicate> weatherAnalysisPredicates = new ArrayList<>();
-		weatherAnalysisPredicates.add(new IsDroughtPredicate());
-		weatherAnalysisPredicates.add(new IsRainingPredicate());
-		weatherAnalysisPredicates.add(new OptimalPreasureAndTemperaturePredicate());
+		Collection<SolarSystemAnalysis> weatherAnalysisPredicates = new ArrayList<>();
+		weatherAnalysisPredicates.add(new IsDroughtAnalysis());
+		weatherAnalysisPredicates.add(new IsRainingAnalysis());
+		weatherAnalysisPredicates.add(new OptimalPreasureAndTemperatureAnalysis());
 
 		Collection<SolarSystemObserver> observers = Lists.newArrayList(eventCollector);
 		

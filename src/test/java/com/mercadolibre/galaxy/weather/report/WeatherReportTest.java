@@ -1,7 +1,8 @@
 package com.mercadolibre.galaxy.weather.report;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -9,8 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import com.mercadolibre.galaxy.SolarSystemTestSupport;
 import com.mercadolibre.galaxy.weather.analysis.MaxRainDayCalculator;
-import com.mercadolibre.galaxy.weather.report.WeatherReport;
-import com.mercadolibre.galaxy.weather.report.WeatherReportResult;
 
 public class WeatherReportTest extends SolarSystemTestSupport {
 	private static final Logger logger = LoggerFactory.getLogger(WeatherReportTest.class);
@@ -31,7 +30,7 @@ public class WeatherReportTest extends SolarSystemTestSupport {
 		
 		logger.debug(reportResult.toString());
 
-		Assert.assertThat(reportResult.getEvents().size(), Matchers.is(eventCollector.getEvents().size()));
+		assertThat(reportResult.getEvents().size(), is(eventCollector.getEvents().size()));
 	}
 
 }
