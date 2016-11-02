@@ -3,7 +3,6 @@ package com.mercadolibre.orbit;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class SolarSystem {
 	private Collection<Orbit> orbits;
@@ -22,7 +21,6 @@ public class SolarSystem {
 		return orbits;
 	}
 
-	// TODO: move to SolarTime class?
 	public void advanceDays(int numberOfDays) {
 		for (int day = 1; day <= numberOfDays; day++) {
 			for (Orbit orbit : orbits) {
@@ -32,18 +30,11 @@ public class SolarSystem {
 		}
 	}
 
-	// TODO: extract event listener logic
 	private void generateEvents(int day) {
-		List<SolarSystemEvent> events = new ArrayList<>();
-
 		for (SolarSystemPredicate predicate : predicates) {
 			if (predicate.matches(orbits)) {
-				events.add(new SolarSystemEvent(day, predicate.getEventType()));
+				notifyObservers(new SolarSystemEvent(day, predicate.getEventType()));
 			}
-		}
-		
-		for (SolarSystemEvent event : events) {
-			notifyObservers(event);
 		}
 	}
 
