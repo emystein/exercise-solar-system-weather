@@ -6,8 +6,8 @@ import java.util.Collection;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 
+import com.mercadolibre.galaxy.event.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.event.SolarSystemObserver;
-import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
 import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
 import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;

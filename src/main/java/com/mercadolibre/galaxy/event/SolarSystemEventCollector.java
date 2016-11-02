@@ -1,10 +1,7 @@
-package com.mercadolibre.galaxy.event.observer;
+package com.mercadolibre.galaxy.event;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.SolarSystemObserver;
 
 public class SolarSystemEventCollector implements SolarSystemObserver {
 

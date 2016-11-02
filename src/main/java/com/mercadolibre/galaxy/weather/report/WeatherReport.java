@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mercadolibre.galaxy.SolarSystem;
 import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
+import com.mercadolibre.galaxy.event.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.weather.analysis.MaxRainDayCalculator;
 
 public class WeatherReport {

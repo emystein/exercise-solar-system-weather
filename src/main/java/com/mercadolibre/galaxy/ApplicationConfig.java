@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.google.common.collect.Lists;
-import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
+import com.mercadolibre.galaxy.event.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
 import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
 import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;
