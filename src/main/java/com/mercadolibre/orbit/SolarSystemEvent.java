@@ -4,10 +4,12 @@ public class SolarSystemEvent {
 
 	private int day;
 	private SolarSystemEventType type;
+	private double value;
 
-	public SolarSystemEvent(int day, SolarSystemEventType type) {
+	public SolarSystemEvent(int day, SolarSystemEventType type, double value) {
 		this.day = day;
 		this.type = type;
+		this.value = value;
 	}
 	
 	public int getDay() {
@@ -18,9 +20,13 @@ public class SolarSystemEvent {
 		return type;
 	}
 
+	public double getValue() {
+		return value;
+	}
+
 	@Override
 	public String toString() {
-		return "SolrSystemEvent [day=" + day + ", type=" + type + "]";
+		return "SolarSystemEvent [day=" + day + ", type=" + type + ", value=" + value + "]";
 	}
 	
 }

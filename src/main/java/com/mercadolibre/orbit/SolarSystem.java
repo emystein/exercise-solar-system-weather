@@ -38,7 +38,7 @@ public class SolarSystem {
 	private void generateEvents(int day) {
 		for (SolarSystemPredicate predicate : predicates) {
 			if (predicate.matches(orbits)) {
-				notifyObservers(new SolarSystemEvent(day, predicate.getEventType()));
+				notifyObservers(new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue()));
 			}
 		}
 	}

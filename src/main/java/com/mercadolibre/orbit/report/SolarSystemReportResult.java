@@ -10,13 +10,16 @@ import com.mercadolibre.orbit.SolarSystemEventType;
 public class SolarSystemReportResult {
 
 	private Multimap<SolarSystemEventType, SolarSystemEvent> events;
+	private double maxRainDay;
 	
-	public SolarSystemReportResult(List<SolarSystemEvent> originalEvents) {
+	public SolarSystemReportResult(List<SolarSystemEvent> originalEvents, double maxRainDay) {
 		events = MultimapBuilder.enumKeys(SolarSystemEventType.class).arrayListValues().build();
 		
 		for (SolarSystemEvent event : originalEvents) {
 			events.put(event.getType(), event);
 		}
+		
+		this.maxRainDay = maxRainDay;
 	}
 
 	public Multimap<SolarSystemEventType, SolarSystemEvent> getEvents() {
@@ -26,9 +29,9 @@ public class SolarSystemReportResult {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		for (SolarSystemEvent event : events.values()) {
-			builder.append(event.toString());
-			builder.append("\n");
+			builder.append(event.toString()).append("\n");
 		}
+		builder.append("Max rain day: ").append(maxRainDay);
 		return builder.toString();
 	}
 }

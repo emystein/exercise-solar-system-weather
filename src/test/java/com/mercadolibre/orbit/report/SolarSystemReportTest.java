@@ -16,8 +16,7 @@ import com.mercadolibre.orbit.SolarSystem;
 import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventCollector;
 import com.mercadolibre.orbit.SolarSystemEventType;
-import com.mercadolibre.orbit.report.SolarSystemReport;
-import com.mercadolibre.orbit.report.SolarSystemReportResult;
+import com.mercadolibre.orbit.analysis.MaxRainDayCalculator;
 
 public class SolarSystemReportTest {
 	private static final Logger logger = LoggerFactory.getLogger(SolarSystemReportTest.class);
@@ -41,7 +40,7 @@ public class SolarSystemReportTest {
 		solarSystem = new SolarSystem(orbits);
 		eventCollector = new SolarSystemEventCollector();
 		solarSystem.registerObserver(eventCollector);
-		report = new SolarSystemReport(solarSystem, TEN_YEARS_IN_DAYS);
+		report = new SolarSystemReport(solarSystem, TEN_YEARS_IN_DAYS, new MaxRainDayCalculator());
 	}
 
 	@Test

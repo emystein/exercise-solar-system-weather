@@ -18,4 +18,12 @@ public abstract class SolarSystemPredicate {
 	}
 	
 	public abstract boolean matches(Collection<Orbit> orbits);
+	
+	/**
+	 * Subclasses can implement this method to store a value associated to the predicate.
+	 * @return the value.
+	 */
+	public double getValue() {
+		return 0;
+	};
 }
