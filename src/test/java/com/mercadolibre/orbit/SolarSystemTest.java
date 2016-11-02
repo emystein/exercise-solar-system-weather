@@ -8,11 +8,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.util.Collection;
 
+import org.assertj.core.util.Lists;
 import org.hamcrest.Matchers;
 import org.junit.Test;
-
-import com.mercadolibre.coordinates.position.Position;
 
 public class SolarSystemTest {
 	private static final double PRECISION = 0.0174d;
@@ -21,114 +21,122 @@ public class SolarSystemTest {
 	private Orbit vulcanoOrbit = new Orbit(1000, 5);
 
 	@Test
+	// TODO: review
 	public void whenCreatingASolarSystemPositionOfOrbitsShould0AndDistanceToSun() throws Exception {
-		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
-		
-		assertThat(solarSystem.positionOf(ferengiOrbit).getCoordinates(), is(new Point(500, 0))); 
-		assertThat(solarSystem.positionOf(betasoideOrbit).getCoordinates(), is(new Point(2000, 0))); 
-		assertThat(solarSystem.positionOf(vulcanoOrbit).getCoordinates(), is(new Point(1000, 0))); 
+		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		SolarSystem solarSystem = new SolarSystem(orbits);
+
+		assertThat(ferengiOrbit.getCoordinates(), is(new Point(500, 0)));
+		assertThat(betasoideOrbit.getCoordinates(), is(new Point(2000, 0)));
+		assertThat(vulcanoOrbit.getCoordinates(), is(new Point(1000, 0)));
 	}
-	
+
 	@Test
 	public void whenAdvancingOneDayThenFerengiOrbitShouldAdvanceOneDegreeClockwise() throws Exception {
 		Orbit orbit = ferengiOrbit;
-		
-		SolarSystem solarSystem = new SolarSystem(orbit);
-		
+
+		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
+
 		// exercise
 		solarSystem.advanceOneDay();
-		
+
 		// verify
-		Position expectedPosition = new Position(Math.toRadians(-1));
-		assertThat(solarSystem.positionOf(orbit).getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+		Orbit expectedPosition = new Orbit(Math.toRadians(-1));
+		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
 
 	@Test
 	public void whenAdvancing90DaysThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
 		Orbit orbit = ferengiOrbit;
-		
-		SolarSystem solarSystem = new SolarSystem(orbit);
-		
+
+		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
+
 		// exercise
 		for (int day = 1; day <= 90; day++) {
 			solarSystem.advanceOneDay();
 		}
-		
+
 		// verify
-		Position expectedPosition = new Position(- (Math.PI / 2));
-		assertThat(solarSystem.positionOf(orbit).getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
+		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
 
 	@Test
 	public void whenAdvancingOneDayThenVulcanoOrbitShouldAdvanceOneDegreeAnticlockwise() throws Exception {
 		Orbit orbit = vulcanoOrbit;
 
-		SolarSystem solarSystem = new SolarSystem(orbit);
+		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
 
 		// exercise
 		solarSystem.advanceOneDay();
 
 		// verify
-		Position expectedPosition = new Position(Math.toRadians(5));
-		assertThat(solarSystem.positionOf(orbit).getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+		Orbit expectedPosition = new Orbit(Math.toRadians(5));
+		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
 
 	@Test
 	public void whenAdvancing270DaysThenFeringiOrbitShouldBeIn90Degrees() throws Exception {
 		Orbit orbit = ferengiOrbit;
-		
-		SolarSystem solarSystem = new SolarSystem(orbit);
-		
+
+		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
+
 		// exercise
 		for (int day = 1; day <= 270; day++) {
 			solarSystem.advanceOneDay();
 		}
-		
+
 		// verify
-		Position expectedPosition = new Position(Math.PI / 2);
-		assertThat(solarSystem.positionOf(orbit).getRadians(), is(closeTo(expectedPosition.getRadians(), PRECISION)));
+		Orbit expectedPosition = new Orbit(Math.PI / 2);
+		assertThat(orbit.getRadians(), is(closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
-	
-	
+
 	@Test
 	public void whenAdvancing18DaysThenVulcanoOrbitShouldBeIn90Degrees() throws Exception {
 		Orbit orbit = vulcanoOrbit;
-		
-		SolarSystem solarSystem = new SolarSystem(orbit);
-		
+
+		SolarSystem solarSystem = new SolarSystem(Lists.newArrayList(orbit));
+
 		// exercise
 		for (int day = 1; day <= 18; day++) {
 			solarSystem.advanceOneDay();
 		}
-		
+
 		// verify
-		Position expectedPosition = new Position(Math.PI / 2);
-		assertThat(solarSystem.positionOf(orbit).getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+		Orbit expectedPosition = new Orbit(Math.PI / 2);
+		assertThat(orbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
 
 	@Test
 	public void whenCreatingASolarSystemPlanetsShouldBeAligned() throws Exception {
-		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		SolarSystem solarSystem = new SolarSystem(orbits);
 
 		assertTrue(solarSystem.orbitsAreAlignedToTheSun());
 	}
-	
+
 	@Test
 	public void whenCreatingASolarSystemShouldNotRain() throws Exception {
-		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		SolarSystem solarSystem = new SolarSystem(orbits);
 
 		assertFalse(solarSystem.isRaining());
 	}
 
 	@Test
 	public void whenCreatingASolarSystemShouldNotExistOptimalConditionsOfPreasureaAndTemperature() throws Exception {
-		SolarSystem solarSystem = new SolarSystem(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+		Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
+
+		SolarSystem solarSystem = new SolarSystem(orbits);
 
 		assertFalse(solarSystem.optimalConditionsOfPreasureAndTemperature());
 	}
-	
+
 	private void assertPoint(SolarSystem solarSystem, Orbit orbit, Point2D expectedPoint) {
-		Point2D newPoint = solarSystem.positionOf(orbit).getCoordinates();
+		Point2D newPoint = orbit.getCoordinates();
 		assertThat(newPoint.getX(), is(Matchers.closeTo(expectedPoint.getX(), PRECISION)));
 		assertThat(newPoint.getY(), is(Matchers.closeTo(expectedPoint.getY(), PRECISION)));
 	}
@@ -141,4 +149,3 @@ public class SolarSystemTest {
 		return expectedPoint;
 	}
 }
-
