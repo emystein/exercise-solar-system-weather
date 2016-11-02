@@ -11,7 +11,7 @@ public class SolarSystem {
 	private Collection<Orbit> orbits;
 	private Collection<SolarSystemObserver> observers = new ArrayList<>();
 	private Collection<SolarSystemPredicate> predicates = new ArrayList<>();
-
+	
 	public SolarSystem(Collection<Orbit> orbits) {
 		this.orbits = orbits;
 		predicates.add(new OrbitsAreAlignedToTheSunPredicate());
@@ -35,7 +35,8 @@ public class SolarSystem {
 	private void generateEvents(int day) {
 		for (SolarSystemPredicate predicate : predicates) {
 			if (predicate.matches(orbits)) {
-				notifyObservers(new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue()));
+				SolarSystemEvent event = new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue());
+				notifyObservers(event);
 			}
 		}
 	}
