@@ -26,23 +26,20 @@ public class SolarSystem {
 			for (Orbit orbit : this.orbits) {
 				orbit.moveDays(1);
 			}
-			this.generateEvents(day);
+			this.analyzeWeather(day);
 		}
 	}
 
-	private void generateEvents(int day) {
+	private void analyzeWeather(int day) {
 		for (SolarSystemPredicate predicate : this.weatherAnalysisPredicates) {
 			if (predicate.matches(this.orbits)) {
-				SolarSystemEvent event = new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue());
-				notifyObservers(event);
+				notifyObservers(new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue()));
 			}
 		}
 	}
 
 	private void notifyObservers(SolarSystemEvent event) {
-		for (SolarSystemObserver observer : this.observers) {
-			observer.notify(event);
-		}
+		this.observers.forEach(observer -> observer.notify(event));
 	}
 
 }

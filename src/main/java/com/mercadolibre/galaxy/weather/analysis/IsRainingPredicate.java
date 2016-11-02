@@ -4,14 +4,18 @@ import java.awt.geom.Point2D;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.mercadolibre.coordinates.PointIsInsideTrianglePredicate;
 import com.mercadolibre.coordinates.TriangleArea;
 import com.mercadolibre.galaxy.Orbit;
 import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
+@Component
+@Scope("request")
 public class IsRainingPredicate extends SolarSystemPredicate {
 
-	private Point2D pointOfTheSun = new Point2D.Double(0, 0);
 	private double rainArea;
 
 	public IsRainingPredicate() {
@@ -20,6 +24,8 @@ public class IsRainingPredicate extends SolarSystemPredicate {
 
 	@Override
 	public boolean matches(Collection<Orbit> orbits) {
+		Point2D pointOfTheSun = new Point2D.Double(0, 0);
+
 		Iterator<Orbit> iterator = orbits.iterator();
 
 		Point2D point1 = iterator.next().getCoordinates();
