@@ -14,7 +14,9 @@ public class SolarSystemEventCollector implements SolarSystemObserver {
 
 	@Override
 	public void notify(SolarSystemEvent event) {
-		events.add(event);
+		if (!(event instanceof NullSolarSystemEvent)) {
+			events.add(event);
+		}
 	}
 
 	public List<SolarSystemEvent> getEvents() {
