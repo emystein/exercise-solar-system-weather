@@ -27,9 +27,7 @@ public class SolarSystem {
 	}
 
 	public void registerObserver(SolarSystemObserver observer) {
-		if (!this.observers.contains(observer)) {
-			this.observers.add(observer);
-		}
+		this.observers.add(observer);
 	}
 
 	public void advanceDays(int numberOfDays) {

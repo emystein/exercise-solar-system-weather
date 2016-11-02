@@ -7,8 +7,6 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.galaxy.Orbit;
-
 public class SolarSystemTest extends SolarSystemTestSupport {
 	private static final double PRECISION = 0.0174d;
 
@@ -63,7 +61,6 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	}
 
 	@Test
-	// TODO: add performance assertions
 	public void advanceTenYears() throws Exception {
 		solarSystem.advanceDays(3650);
 	}

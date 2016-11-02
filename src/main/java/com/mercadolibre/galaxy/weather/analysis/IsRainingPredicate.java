@@ -4,14 +4,11 @@ import java.awt.geom.Point2D;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.springframework.stereotype.Component;
-
 import com.mercadolibre.coordinates.PointIsInsideTrianglePredicate;
 import com.mercadolibre.coordinates.TriangleArea;
 import com.mercadolibre.galaxy.Orbit;
 import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
-@Component
 public class IsRainingPredicate extends SolarSystemPredicate {
 
 	private Point2D pointOfTheSun = new Point2D.Double(0, 0);

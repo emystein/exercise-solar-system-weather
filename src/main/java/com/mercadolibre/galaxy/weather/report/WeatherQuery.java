@@ -15,10 +15,9 @@ public class WeatherQuery {
 	public WeatherQuery(SolarSystem solarSystem, SolarSystemEventCollector eventCollector) {
 		this.solarSystem = solarSystem;
 		this.eventCollector = eventCollector;
-		this.solarSystem.registerObserver(eventCollector);
 	}
 
-	public synchronized SolarSystemEvent getWeather(int day) {
+	public SolarSystemEvent getWeather(int day) {
 		this.solarSystem.advanceDays(day);
 
 		List<SolarSystemEvent> events = this.eventCollector.getEvents();
