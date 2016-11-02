@@ -31,6 +31,17 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	}
 
 	@Test
+	public void whenMovingToDay90ThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
+		// exercise
+		solarSystem.goToDay(90);
+		
+		// verify
+		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
+		assertThat(ferengiOrbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+	}
+
+	
+	@Test
 	public void whenAdvancingOneDayThenVulcanoOrbitShouldAdvanceOneDegreeAnticlockwise() throws Exception {
 		// exercise
 		solarSystem.advanceDays(1);

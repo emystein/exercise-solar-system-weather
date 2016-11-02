@@ -61,9 +61,7 @@ public class Orbit {
 	}
 
 	public void moveDays(int numberOfDays) {
-		for (int day = 1; day <= numberOfDays; day++) {
-			this.setRadians(getRadians() + getAngularSpeedPerDay());
-		}
+		this.setRadians(numberOfDays * (getRadians() + getAngularSpeedPerDay()));
 	}
 
 	private double round(double value) {

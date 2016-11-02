@@ -25,12 +25,12 @@ public class WeatherQuery {
 	}
 
 	public SolarSystemEvent getWeather(int day) {
-		this.solarSystem.advanceDays(day);
+		this.solarSystem.goToDay(day);
 
 		List<SolarSystemEvent> events = this.eventCollector.getEvents();
 
 		if (!events.isEmpty()) {
-			return events.get(events.size() - 1);
+			return events.get(0);
 		} else {
 			return new NullSolarSystemEvent(day);
 		}

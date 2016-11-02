@@ -30,6 +30,13 @@ public class SolarSystem {
 		}
 	}
 
+	public void goToDay(int day) {
+		for (Orbit orbit : this.orbits) {
+			orbit.moveDays(day);
+		}
+		this.analyzeWeather(day);
+	}
+	
 	private void analyzeWeather(int day) {
 		for (SolarSystemAnalysis analysis : this.weatherAnalysis) {
 			SolarSystemEvent event = analysis.analyze(this.orbits, day);
