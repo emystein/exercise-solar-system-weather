@@ -4,6 +4,11 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.mercadolibre.orbit.analysis.IsRainingPredicate;
+import com.mercadolibre.orbit.analysis.OptimalPreasureAndTemperaturePredicate;
+import com.mercadolibre.orbit.analysis.OrbitsAreAlignedToTheSunPredicate;
+import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+
 public class SolarSystem {
 	private Collection<Orbit> orbits;
 	private Point2D pointOfTheSun = new Point2D.Double(0, 0);

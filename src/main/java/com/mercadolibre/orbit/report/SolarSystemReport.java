@@ -1,4 +1,7 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.orbit.report;
+
+import com.mercadolibre.orbit.SolarSystem;
+import com.mercadolibre.orbit.SolarSystemEventCollector;
 
 public class SolarSystemReport {
 	

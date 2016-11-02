@@ -1,6 +1,10 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.orbit.analysis;
 
 import java.util.Collection;
+
+import com.mercadolibre.orbit.Orbit;
+import com.mercadolibre.orbit.OrbitAlignmentQuery;
+import com.mercadolibre.orbit.SolarSystemEventType;
 
 public class OrbitsAreAlignedToTheSunPredicate extends SolarSystemPredicate {
 

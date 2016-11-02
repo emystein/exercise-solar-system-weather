@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.orbit.report;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -10,6 +10,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.mercadolibre.orbit.Orbit;
+import com.mercadolibre.orbit.SolarSystem;
+import com.mercadolibre.orbit.SolarSystemEvent;
+import com.mercadolibre.orbit.SolarSystemEventCollector;
+import com.mercadolibre.orbit.SolarSystemEventType;
+import com.mercadolibre.orbit.report.SolarSystemReport;
+import com.mercadolibre.orbit.report.SolarSystemReportResult;
 
 public class SolarSystemReportTest {
 	private static final Logger logger = LoggerFactory.getLogger(SolarSystemReportTest.class);

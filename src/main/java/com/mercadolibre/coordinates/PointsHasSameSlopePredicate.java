@@ -1,10 +1,10 @@
-package com.mercadolibre.coordinates.cartesian;
+package com.mercadolibre.coordinates;
 
 import java.awt.geom.Point2D;
 
 public class PointsHasSameSlopePredicate {
 
-	public static boolean evaluate(Point2D p1, Point2D p2, Point2D p3) {
+	public static boolean matches(Point2D p1, Point2D p2, Point2D p3) {
 		double slopeP1P2 = slope(p1, p2);
 		double slopeP2P3 = slope(p2, p3);
 		

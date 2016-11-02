@@ -1,4 +1,4 @@
-package com.mercadolibre.coordinates.cartesian;
+package com.mercadolibre.coordinates;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.coordinates.cartesian.PointIsInsideTrianglePredicate;
+import com.mercadolibre.coordinates.PointIsInsideTrianglePredicate;
 
 public class PointIsInsideTrianglePredicateTest {
 	Point2D zero = createPoint(0, 0);
@@ -18,7 +18,7 @@ public class PointIsInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(-4, 2); 
 		Point2D p3 = createPoint(-4, -5);
 		
-		assertTrue(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertTrue(PointIsInsideTrianglePredicate.matches(zero, p1, p2, p3));
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class PointIsInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(0, 4); 
 		Point2D p3 = createPoint(-3, 3);
 		
-		assertFalse(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertFalse(PointIsInsideTrianglePredicate.matches(zero, p1, p2, p3));
 	}
 
 	private Point2D createPoint(int x, int y) {
@@ -40,7 +40,7 @@ public class PointIsInsideTrianglePredicateTest {
 		Point2D p2 = createPoint(1000, 0); 
 		Point2D p3 = createPoint(2000, 0);
 		
-		assertFalse(PointIsInsideTrianglePredicate.evaluate(zero, p1, p2, p3));
+		assertFalse(PointIsInsideTrianglePredicate.matches(zero, p1, p2, p3));
 	}
 
 }

@@ -1,9 +1,11 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.orbit.report;
 
 import java.util.List;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
+import com.mercadolibre.orbit.SolarSystemEvent;
+import com.mercadolibre.orbit.SolarSystemEventType;
 
 public class SolarSystemReportResult {
 

@@ -1,4 +1,4 @@
-package com.mercadolibre.coordinates.cartesian;
+package com.mercadolibre.coordinates;
 
 import java.awt.geom.Point2D;
 
@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
  */
 public class PointIsInsideTrianglePredicate {
 
-	public static boolean evaluate(Point2D point, Point2D triangleVertex1, Point2D triangleVertex2, Point2D triangleVertex3) {
+	public static boolean matches(Point2D point, Point2D triangleVertex1, Point2D triangleVertex2, Point2D triangleVertex3) {
 		if (noPairOfPointsInTheSameLine(point, triangleVertex1, triangleVertex2, triangleVertex3)) {
 			return checkSigns(point, triangleVertex1, triangleVertex2, triangleVertex3);
 		} else {

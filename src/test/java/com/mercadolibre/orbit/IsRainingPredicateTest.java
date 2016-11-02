@@ -9,6 +9,9 @@ import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mercadolibre.orbit.analysis.IsRainingPredicate;
+import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+
 public class IsRainingPredicateTest {
 	private Orbit ferengiOrbit = new Orbit(500, -1);
 	private Orbit betasoideOrbit = new Orbit(2000, -3);

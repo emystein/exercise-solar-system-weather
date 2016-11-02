@@ -8,6 +8,9 @@ import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mercadolibre.orbit.analysis.OptimalPreasureAndTemperaturePredicate;
+import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+
 public class OptimalPreasureAndTemperaturePredicateTest {
 	private Orbit ferengiOrbit = new Orbit(500, -1);
 	private Orbit betasoideOrbit = new Orbit(2000, -3);
