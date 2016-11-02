@@ -11,24 +11,22 @@ public class WeatherReport {
 	
 	private SolarSystem solarSystem;
 	private SolarSystemEventCollector eventCollector = new SolarSystemEventCollector();
-	private int numberOfDays;
 	private MaxRainDayCalculator maxRainDayCalculator;
 	
-	public WeatherReport(SolarSystem solarSystem, int numberOfDays, MaxRainDayCalculator maxRainCalculator) {
+	public WeatherReport(SolarSystem solarSystem, MaxRainDayCalculator maxRainCalculator) {
 		this.solarSystem = solarSystem;
 		solarSystem.registerObserver(eventCollector);
-		this.numberOfDays = numberOfDays;
 		this.maxRainDayCalculator = maxRainCalculator;
 	}
 
-	public WeatherReportResult execute() {
+	public WeatherReportResult execute(int numberOfDays) {
 		solarSystem.advanceDays(numberOfDays);
 		
 		List<SolarSystemEvent> events = eventCollector.getEvents();
 		
 		double maxRain = maxRainDayCalculator.calculate(events);
 		
-		return new WeatherReportResult(events, maxRain);
+		return new WeatherReportResult(numberOfDays, events, maxRain);
 	}
 
 	

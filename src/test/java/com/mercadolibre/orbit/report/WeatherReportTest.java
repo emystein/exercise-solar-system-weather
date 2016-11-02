@@ -1,7 +1,6 @@
 package com.mercadolibre.orbit.report;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.assertj.core.util.Lists;
 import org.hamcrest.Matchers;
@@ -13,9 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.mercadolibre.orbit.Orbit;
 import com.mercadolibre.orbit.SolarSystem;
-import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventCollector;
-import com.mercadolibre.orbit.SolarSystemEventType;
 import com.mercadolibre.orbit.weather.MaxRainDayCalculator;
 
 public class WeatherReportTest {
@@ -40,23 +37,16 @@ public class WeatherReportTest {
 		solarSystem = new SolarSystem(orbits);
 		eventCollector = new SolarSystemEventCollector();
 		solarSystem.registerObserver(eventCollector);
-		report = new WeatherReport(solarSystem, TEN_YEARS_IN_DAYS, new MaxRainDayCalculator());
+		report = new WeatherReport(solarSystem, new MaxRainDayCalculator());
 	}
 
 	@Test
 	public void report() throws Exception {
-		WeatherReportResult reportResult = report.execute();
+		WeatherReportResult reportResult = report.execute(TEN_YEARS_IN_DAYS);
+		
 		logger.debug(reportResult.toString());
 
 		Assert.assertThat(reportResult.getEvents().size(), Matchers.is(eventCollector.getEvents().size()));
 	}
-	
-	private Collection<SolarSystemEvent> filterEventsBy(Collection<SolarSystemEvent> originalEvents, SolarSystemEventType eventType) {
-		// @formatter: off
-		Collection<SolarSystemEvent> events = originalEvents.stream()
-				.filter(event -> event.getType().equals(eventType))
-				.collect(Collectors.toList());
-		// @formatter: on
-		return events;
-	}
+
 }
