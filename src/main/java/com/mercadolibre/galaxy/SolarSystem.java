@@ -9,12 +9,21 @@ import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
 
 public class SolarSystem {
 	private Collection<Orbit> orbits;
-	private Collection<SolarSystemObserver> observers = new ArrayList<>();
 	private Collection<SolarSystemPredicate> weatherAnalysisPredicates = new ArrayList<>();
+	private Collection<SolarSystemObserver> observers = new ArrayList<>();
 	
 	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemPredicate> weatherAnalysisPredicates) {
 		this.orbits = orbits;
 		this.weatherAnalysisPredicates = weatherAnalysisPredicates;
+	}
+
+	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemPredicate> weatherAnalysisPredicates,
+			Collection<SolarSystemObserver> observers) {
+		this(orbits, weatherAnalysisPredicates);
+
+		for (SolarSystemObserver solarSystemObserver : observers) {
+			this.registerObserver(solarSystemObserver);
+		}
 	}
 
 	public void registerObserver(SolarSystemObserver observer) {
