@@ -1,8 +1,5 @@
 package com.mercadolibre.orbit.report;
 
-import java.util.Collection;
-
-import org.assertj.core.util.Lists;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,33 +7,19 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mercadolibre.orbit.Orbit;
-import com.mercadolibre.orbit.SolarSystem;
-import com.mercadolibre.orbit.SolarSystemEventCollector;
+import com.mercadolibre.orbit.SolarSystemTestSupport;
 import com.mercadolibre.orbit.weather.MaxRainDayCalculator;
 
-public class WeatherReportTest {
+public class WeatherReportTest extends SolarSystemTestSupport {
 	private static final Logger logger = LoggerFactory.getLogger(WeatherReportTest.class);
 	
 	private static final int TEN_YEARS_IN_DAYS = 3650;
 	
-	private Orbit ferengiOrbit = new Orbit(500, -1);
-	private Orbit betasoideOrbit = new Orbit(2000, -3);
-	private Orbit vulcanoOrbit = new Orbit(1000, 5);
-
-	private Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
-	
-	private SolarSystem solarSystem;
-
-	private SolarSystemEventCollector eventCollector;
-
 	private WeatherReport report;
 
 	@Before
 	public void setUp() throws Exception {
-		solarSystem = new SolarSystem(orbits);
-		eventCollector = new SolarSystemEventCollector();
-		solarSystem.registerObserver(eventCollector);
+		super.setUp();
 		report = new WeatherReport(solarSystem, new MaxRainDayCalculator());
 	}
 

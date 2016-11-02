@@ -4,28 +4,11 @@ import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Collection;
-
-import org.assertj.core.util.Lists;
 import org.hamcrest.Matchers;
-import org.junit.Before;
 import org.junit.Test;
 
-public class SolarSystemTest {
+public class SolarSystemTest extends SolarSystemTestSupport {
 	private static final double PRECISION = 0.0174d;
-	
-	private Orbit ferengiOrbit = new Orbit(500, -1);
-	private Orbit betasoideOrbit = new Orbit(2000, -3);
-	private Orbit vulcanoOrbit = new Orbit(1000, 5);
-	
-	private Collection<Orbit> orbits = Lists.newArrayList(ferengiOrbit, betasoideOrbit, vulcanoOrbit);
-
-	private SolarSystem solarSystem;
-
-	@Before
-	public void setUp() throws Exception {
-		solarSystem = new SolarSystem(orbits);
-	}
 
 	@Test
 	public void whenAdvancingOneDayThenFerengiOrbitShouldAdvanceOneDegreeClockwise() throws Exception {
