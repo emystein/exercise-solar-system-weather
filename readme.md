@@ -2,45 +2,40 @@
 
 Resolución de ejercicios planteados en PDF adjunto 'Examen ML - Nivel 2.pdf'.
 
-# Requerimientos
+# Requerimientos del sistema
 
 * JDK 1.8
 * Maven 3.x
 
-# Deployment
-
-## Local
+# Build
 
 ```
 mvn clean install
 ```
-
-## Web
+# Deployment cloud usando Cloudfoundry
 
 ```
 mvn clean install
 cf push galaxy-weather -p target/galaxy-weather-0.0.1-SNAPSHOT.jar
 ```
 
-# Ejecución
-
-## Unit Tests
+## Tests
 
 ```
 mvn clean test
 ```
 
-## Job
+## Job de pronóstico de 10 años
 
-Ver SolarSystemReportTest.
+Se ejecuta en [WeatherReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherReportTest).
 
-## Servicio REST
+# Ejecución
 
-### Deployado en la web
+## Cloud
 
-Run: HTTP GET <http://galaxy-weather.cfapps.io/clima?dia=566>
+HTTP GET <http://galaxy-weather.cfapps.io/clima?dia=566>
 
-### Local
+## Local
 
 ```
 mvn spring-boot:run
