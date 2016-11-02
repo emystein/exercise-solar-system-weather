@@ -24,9 +24,4 @@ public class SolarSystemEvent {
 		return value;
 	}
 
-	@Override
-	public String toString() {
-		return "SolarSystemEvent [day=" + day + ", type=" + type + ", value=" + value + "]";
-	}
-	
 }

@@ -31,7 +31,8 @@ public class WeatherReportResult {
 		builder.append("Days: ").append(numberOfDays).append("\n");
 		
 		for (SolarSystemEvent event : events) {
-			builder.append(event.toString()).append("\n");
+			builder.append("Day: ").append(event.getDay()).append(", ");
+			builder.append("Event: ").append(event.getType()).append("\n");
 		}
 		
 		builder.append("Max rain day: ").append(maxRainDay).append("\n");
