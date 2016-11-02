@@ -5,25 +5,20 @@ import java.util.Collection;
 
 import com.mercadolibre.galaxy.event.SolarSystemEvent;
 import com.mercadolibre.galaxy.event.SolarSystemObserver;
-import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
-import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;
-import com.mercadolibre.galaxy.weather.analysis.OrbitsAreAlignedToTheSunPredicate;
 import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
 
 public class SolarSystem {
 	private Collection<Orbit> orbits;
 	private Collection<SolarSystemObserver> observers = new ArrayList<>();
-	private Collection<SolarSystemPredicate> predicates = new ArrayList<>();
+	private Collection<SolarSystemPredicate> weatherAnalysisPredicates = new ArrayList<>();
 	
-	public SolarSystem(Collection<Orbit> orbits) {
+	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemPredicate> weatherAnalysisPredicates) {
 		this.orbits = orbits;
-		predicates.add(new OrbitsAreAlignedToTheSunPredicate());
-		predicates.add(new IsRainingPredicate());
-		predicates.add(new OptimalPreasureAndTemperaturePredicate());
+		this.weatherAnalysisPredicates = weatherAnalysisPredicates;
 	}
 
-	public Collection<Orbit> getOrbits() {
-		return orbits;
+	public void registerObserver(SolarSystemObserver observer) {
+		observers.add(observer);
 	}
 
 	public void advanceDays(int numberOfDays) {
@@ -36,7 +31,7 @@ public class SolarSystem {
 	}
 
 	private void generateEvents(int day) {
-		for (SolarSystemPredicate predicate : predicates) {
+		for (SolarSystemPredicate predicate : weatherAnalysisPredicates) {
 			if (predicate.matches(orbits)) {
 				SolarSystemEvent event = new SolarSystemEvent(day, predicate.getEventType(), predicate.getValue());
 				notifyObservers(event);
@@ -50,7 +45,4 @@ public class SolarSystem {
 		}
 	}
 
-	public void registerObserver(SolarSystemObserver observer) {
-		observers.add(observer);
-	}
 }

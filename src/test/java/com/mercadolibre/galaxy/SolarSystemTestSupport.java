@@ -1,13 +1,16 @@
 package com.mercadolibre.galaxy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 
-import com.mercadolibre.galaxy.Orbit;
-import com.mercadolibre.galaxy.SolarSystem;
 import com.mercadolibre.galaxy.event.observer.SolarSystemEventCollector;
+import com.mercadolibre.galaxy.weather.analysis.IsRainingPredicate;
+import com.mercadolibre.galaxy.weather.analysis.OptimalPreasureAndTemperaturePredicate;
+import com.mercadolibre.galaxy.weather.analysis.IsDroughtPredicate;
+import com.mercadolibre.galaxy.weather.analysis.SolarSystemPredicate;
 
 public class SolarSystemTestSupport {
 	protected Orbit ferengiOrbit = new Orbit(500, -1);
@@ -22,7 +25,12 @@ public class SolarSystemTestSupport {
 
 	@Before
 	public void setUp() throws Exception {
-		solarSystem = new SolarSystem(orbits);
+		Collection<SolarSystemPredicate> weatherAnalysisPredicates = new ArrayList<>();
+		weatherAnalysisPredicates.add(new IsDroughtPredicate());
+		weatherAnalysisPredicates.add(new IsRainingPredicate());
+		weatherAnalysisPredicates.add(new OptimalPreasureAndTemperaturePredicate());
+
+		solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates);
 		eventCollector = new SolarSystemEventCollector();
 		solarSystem.registerObserver(eventCollector);
 	}

@@ -25,6 +25,6 @@ public class OptimalPreasureAndTemperaturePredicate extends SolarSystemPredicate
 	}
 
 	public boolean orbitsAreAlignedToTheSun(Collection<Orbit> orbits) {
-		return OrbitAlignmentQuery.orbitsAreAligned(orbits);
+		return OrbitsAlignedToTheSunPredicate.matches(orbits);
 	}
 }

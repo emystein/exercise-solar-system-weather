@@ -4,12 +4,11 @@ import java.util.Collection;
 
 import com.mercadolibre.galaxy.Orbit;
 
-// TODO: rename to PositionAlignmentPredicate (rename test too)
-public class OrbitAlignmentQuery {
-	// 1 degree = 0.0174 rads
+public class OrbitsAlignedToTheSunPredicate {
+	// precision of 1 degree = 0.0174 rads
 	private static final double ONE_DEGREE_RADIANS_PRECISION = 0.0174d;
 
-	public static boolean orbitsAreAligned(Collection<Orbit> orbits) {
+	public static boolean matches(Collection<Orbit> orbits) {
 		double initialRadians = moveToFirstQuadrant(orbits.iterator().next().getRadians());
 		double initialTan = Math.tan(initialRadians);
 		
