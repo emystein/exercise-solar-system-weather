@@ -17,15 +17,6 @@ public class SolarSystem {
 		this.weatherAnalysisPredicates = weatherAnalysisPredicates;
 	}
 
-	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemPredicate> weatherAnalysisPredicates,
-			Collection<SolarSystemObserver> observers) {
-		this(orbits, weatherAnalysisPredicates);
-
-		for (SolarSystemObserver solarSystemObserver : observers) {
-			this.registerObserver(solarSystemObserver);
-		}
-	}
-
 	public void registerObserver(SolarSystemObserver observer) {
 		this.observers.add(observer);
 	}

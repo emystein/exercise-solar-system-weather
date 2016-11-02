@@ -33,6 +33,10 @@ public class SolarSystemTestSupport {
 
 		Collection<SolarSystemObserver> observers = Lists.newArrayList(eventCollector);
 		
-		solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates, observers);
+		solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates);
+		
+		for (SolarSystemObserver observer : observers) {
+			solarSystem.registerObserver(observer);
+		}
 	}
 }
