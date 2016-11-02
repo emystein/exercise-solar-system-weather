@@ -9,8 +9,8 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.mercadolibre.orbit</groupId>
-	<artifactId>orbit-calculator</artifactId>
+	<groupId>com.mercadolibre.test</groupId>
+	<artifactId>galaxy-weather</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
