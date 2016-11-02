@@ -23,10 +23,12 @@ public class WeatherReport {
 
 	public WeatherReportResult execute() {
 		solarSystem.advanceDays(numberOfDays);
+		
 		List<SolarSystemEvent> events = eventCollector.getEvents();
+		
 		double maxRain = maxRainDayCalculator.calculate(events);
-		WeatherReportResult result = new WeatherReportResult(events, maxRain);
-		return result;
+		
+		return new WeatherReportResult(events, maxRain);
 	}
 
 	
