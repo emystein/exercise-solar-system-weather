@@ -15,10 +15,14 @@ Resolución de ejercicios planteados en PDF adjunto 'Examen ML - Nivel 2.pdf'.
 mvn clean test
 ```
 
+## Job
+
+Ver SolarSystemReportTest.
+
 ## Servicio REST
 
 ```
 mvn spring-boot:run
 ```
 
-<http://localhost:8080/clima?dia=566>
+Luego HTTP GET <http://localhost:8080/clima?dia=566>
