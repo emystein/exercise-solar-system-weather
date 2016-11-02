@@ -8,8 +8,7 @@ import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mercadolibre.orbit.analysis.OrbitsAreAlignedToTheSunPredicate;
-import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+import com.mercadolibre.orbit.weather.OrbitsAreAlignedToTheSunPredicate;
 
 public class OrbitsAreAlignedToTheSunPredicateTest {
 	private Orbit ferengiOrbit = new Orbit(500, -1);

@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit.analysis;
+package com.mercadolibre.orbit.weather;
 
 import java.awt.geom.Point2D;
 import java.util.Collection;
@@ -8,15 +8,15 @@ import com.mercadolibre.coordinates.PointIsInsideTrianglePredicate;
 import com.mercadolibre.coordinates.TriangleArea;
 import com.mercadolibre.orbit.Orbit;
 import com.mercadolibre.orbit.SolarSystemEventType;
+import com.mercadolibre.orbit.SolarSystemPredicate;
 
 public class IsRainingPredicate extends SolarSystemPredicate {
 
-	private Point2D pointOfTheSun;
+	private Point2D pointOfTheSun = new Point2D.Double(0, 0);
 	private double rainArea;
 
-	public IsRainingPredicate(Point2D pointOfTheSun) {
+	public IsRainingPredicate() {
 		super(SolarSystemEventType.RAIN);
-		this.pointOfTheSun = pointOfTheSun;
 	}
 
 	@Override

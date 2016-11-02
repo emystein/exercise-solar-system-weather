@@ -16,10 +16,10 @@ import com.mercadolibre.orbit.SolarSystem;
 import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventCollector;
 import com.mercadolibre.orbit.SolarSystemEventType;
-import com.mercadolibre.orbit.analysis.MaxRainDayCalculator;
+import com.mercadolibre.orbit.weather.MaxRainDayCalculator;
 
-public class SolarSystemReportTest {
-	private static final Logger logger = LoggerFactory.getLogger(SolarSystemReportTest.class);
+public class WeatherReportTest {
+	private static final Logger logger = LoggerFactory.getLogger(WeatherReportTest.class);
 	
 	private static final int TEN_YEARS_IN_DAYS = 3650;
 	
@@ -33,19 +33,19 @@ public class SolarSystemReportTest {
 
 	private SolarSystemEventCollector eventCollector;
 
-	private SolarSystemReport report;
+	private WeatherReport report;
 
 	@Before
 	public void setUp() throws Exception {
 		solarSystem = new SolarSystem(orbits);
 		eventCollector = new SolarSystemEventCollector();
 		solarSystem.registerObserver(eventCollector);
-		report = new SolarSystemReport(solarSystem, TEN_YEARS_IN_DAYS, new MaxRainDayCalculator());
+		report = new WeatherReport(solarSystem, TEN_YEARS_IN_DAYS, new MaxRainDayCalculator());
 	}
 
 	@Test
 	public void report() throws Exception {
-		SolarSystemReportResult reportResult = report.execute();
+		WeatherReportResult reportResult = report.execute();
 		logger.debug(reportResult.toString());
 
 		Assert.assertThat(reportResult.getEvents().size(), Matchers.is(eventCollector.getEvents().size()));

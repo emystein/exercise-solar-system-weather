@@ -1,6 +1,9 @@
 package com.mercadolibre.orbit;
 
+import static com.mercadolibre.orbit.SolarSystemEventType.OPTIMAL_PREASSURE_AND_TEMPERATURE;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
 
@@ -8,8 +11,7 @@ import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mercadolibre.orbit.analysis.OptimalPreasureAndTemperaturePredicate;
-import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+import com.mercadolibre.orbit.weather.OptimalPreasureAndTemperaturePredicate;
 
 public class OptimalPreasureAndTemperaturePredicateTest {
 	private Orbit ferengiOrbit = new Orbit(500, -1);
@@ -28,6 +30,11 @@ public class OptimalPreasureAndTemperaturePredicateTest {
 		predicate = new OptimalPreasureAndTemperaturePredicate();
 	}
 
+	@Test
+	public void predicateType() throws Exception {
+		assertThat(predicate.getEventType(), is(OPTIMAL_PREASSURE_AND_TEMPERATURE));
+	}
+	
 	@Test
 	public void whenCreatingASolarSystemShouldNotExistOptimalConditionsOfPreasureaAndTemperature() throws Exception {
 		assertFalse(predicate.matches(orbits));

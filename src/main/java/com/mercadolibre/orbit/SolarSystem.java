@@ -1,24 +1,21 @@
 package com.mercadolibre.orbit;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.mercadolibre.orbit.analysis.IsRainingPredicate;
-import com.mercadolibre.orbit.analysis.OptimalPreasureAndTemperaturePredicate;
-import com.mercadolibre.orbit.analysis.OrbitsAreAlignedToTheSunPredicate;
-import com.mercadolibre.orbit.analysis.SolarSystemPredicate;
+import com.mercadolibre.orbit.weather.IsRainingPredicate;
+import com.mercadolibre.orbit.weather.OptimalPreasureAndTemperaturePredicate;
+import com.mercadolibre.orbit.weather.OrbitsAreAlignedToTheSunPredicate;
 
 public class SolarSystem {
 	private Collection<Orbit> orbits;
-	private Point2D pointOfTheSun = new Point2D.Double(0, 0);
 	private Collection<SolarSystemObserver> observers = new ArrayList<>();
 	private Collection<SolarSystemPredicate> predicates = new ArrayList<>();
 
 	public SolarSystem(Collection<Orbit> orbits) {
 		this.orbits = orbits;
 		predicates.add(new OrbitsAreAlignedToTheSunPredicate());
-		predicates.add(new IsRainingPredicate(pointOfTheSun));
+		predicates.add(new IsRainingPredicate());
 		predicates.add(new OptimalPreasureAndTemperaturePredicate());
 	}
 

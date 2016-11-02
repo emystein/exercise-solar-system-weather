@@ -1,9 +1,6 @@
-package com.mercadolibre.orbit.analysis;
+package com.mercadolibre.orbit;
 
 import java.util.Collection;
-
-import com.mercadolibre.orbit.Orbit;
-import com.mercadolibre.orbit.SolarSystemEventType;
 
 public abstract class SolarSystemPredicate {
 

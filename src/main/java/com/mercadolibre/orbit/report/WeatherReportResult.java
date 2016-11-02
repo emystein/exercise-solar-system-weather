@@ -7,12 +7,12 @@ import com.google.common.collect.MultimapBuilder;
 import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventType;
 
-public class SolarSystemReportResult {
+public class WeatherReportResult {
 
 	private Multimap<SolarSystemEventType, SolarSystemEvent> events;
 	private double maxRainDay;
 	
-	public SolarSystemReportResult(List<SolarSystemEvent> originalEvents, double maxRainDay) {
+	public WeatherReportResult(List<SolarSystemEvent> originalEvents, double maxRainDay) {
 		events = MultimapBuilder.enumKeys(SolarSystemEventType.class).arrayListValues().build();
 		
 		for (SolarSystemEvent event : originalEvents) {

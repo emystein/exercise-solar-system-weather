@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventType;
+import com.mercadolibre.orbit.weather.MaxRainDayCalculator;
 
 public class MaxRainDayCalculatorTest {
 

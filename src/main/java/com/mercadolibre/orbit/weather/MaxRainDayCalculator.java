@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit.analysis;
+package com.mercadolibre.orbit.weather;
 
 import java.util.List;
 

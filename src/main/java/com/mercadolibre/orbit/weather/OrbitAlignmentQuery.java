@@ -1,6 +1,8 @@
-package com.mercadolibre.orbit;
+package com.mercadolibre.orbit.weather;
 
 import java.util.Collection;
+
+import com.mercadolibre.orbit.Orbit;
 
 // TODO: rename to PositionAlignmentPredicate (rename test too)
 public class OrbitAlignmentQuery {

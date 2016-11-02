@@ -5,27 +5,27 @@ import java.util.List;
 import com.mercadolibre.orbit.SolarSystem;
 import com.mercadolibre.orbit.SolarSystemEvent;
 import com.mercadolibre.orbit.SolarSystemEventCollector;
-import com.mercadolibre.orbit.analysis.MaxRainDayCalculator;
+import com.mercadolibre.orbit.weather.MaxRainDayCalculator;
 
-public class SolarSystemReport {
+public class WeatherReport {
 	
 	private SolarSystem solarSystem;
 	private SolarSystemEventCollector eventCollector = new SolarSystemEventCollector();
 	private int numberOfDays;
 	private MaxRainDayCalculator maxRainDayCalculator;
 	
-	public SolarSystemReport(SolarSystem solarSystem, int numberOfDays, MaxRainDayCalculator maxRainCalculator) {
+	public WeatherReport(SolarSystem solarSystem, int numberOfDays, MaxRainDayCalculator maxRainCalculator) {
 		this.solarSystem = solarSystem;
 		solarSystem.registerObserver(eventCollector);
 		this.numberOfDays = numberOfDays;
 		this.maxRainDayCalculator = maxRainCalculator;
 	}
 
-	public SolarSystemReportResult execute() {
+	public WeatherReportResult execute() {
 		solarSystem.advanceDays(numberOfDays);
 		List<SolarSystemEvent> events = eventCollector.getEvents();
 		double maxRain = maxRainDayCalculator.calculate(events);
-		SolarSystemReportResult result = new SolarSystemReportResult(events, maxRain);
+		WeatherReportResult result = new WeatherReportResult(events, maxRain);
 		return result;
 	}
 

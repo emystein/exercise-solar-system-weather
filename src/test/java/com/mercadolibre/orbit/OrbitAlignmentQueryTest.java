@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.mercadolibre.orbit.Orbit;
+import com.mercadolibre.orbit.weather.OrbitAlignmentQuery;
 
 public class OrbitAlignmentQueryTest {
 

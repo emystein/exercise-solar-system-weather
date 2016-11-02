@@ -1,4 +1,4 @@
-package com.mercadolibre.orbit.analysis;
+package com.mercadolibre.orbit.weather;
 
 import java.awt.geom.Point2D;
 import java.util.Collection;
@@ -6,13 +6,13 @@ import java.util.Iterator;
 
 import com.mercadolibre.coordinates.PointsHasSameSlopePredicate;
 import com.mercadolibre.orbit.Orbit;
-import com.mercadolibre.orbit.OrbitAlignmentQuery;
 import com.mercadolibre.orbit.SolarSystemEventType;
+import com.mercadolibre.orbit.SolarSystemPredicate;
 
 public class OptimalPreasureAndTemperaturePredicate extends SolarSystemPredicate {
 
 	public OptimalPreasureAndTemperaturePredicate() {
-		super(SolarSystemEventType.RAIN);
+		super(SolarSystemEventType.OPTIMAL_PREASSURE_AND_TEMPERATURE);
 	}
 
 	@Override
