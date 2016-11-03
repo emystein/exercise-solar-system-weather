@@ -60,6 +60,10 @@ public class Orbit {
 		return new Point2D.Double(x, y);
 	}
 
+	public void reset() {
+		setRadians(0);
+	}
+
 	public void moveDays(int numberOfDays) {
 		this.setRadians(numberOfDays * (getRadians() + getAngularSpeedPerDay()));
 	}

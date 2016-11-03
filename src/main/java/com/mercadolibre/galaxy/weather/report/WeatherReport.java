@@ -20,7 +20,7 @@ public class WeatherReport {
 	}
 
 	public WeatherReportResult execute(int numberOfDays) {
-		solarSystem.advanceDays(numberOfDays);
+		advanceDays(numberOfDays);
 		
 		List<SolarSystemEvent> events = eventCollector.getEvents();
 		
@@ -29,5 +29,9 @@ public class WeatherReport {
 		return new WeatherReportResult(numberOfDays, events, maxRain);
 	}
 
-	
+	public void advanceDays(int numberOfDays) {
+		for (int day = 1; day <= numberOfDays; day++) {
+			solarSystem.goToDay(day);
+		}
+	}
 }

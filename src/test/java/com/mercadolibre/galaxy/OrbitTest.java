@@ -7,8 +7,6 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.galaxy.Orbit;
-
 public class OrbitTest {
 	
 	@Test
@@ -48,5 +46,18 @@ public class OrbitTest {
 		ferengiOrbit.moveDays(90);
 		
 		assertThat(ferengiOrbit.getCoordinates(), is(new Point2D.Double(0, -500)));
+	}
+	
+	@Test
+	public void resetOrbit() throws Exception {
+		int traslationAnglePerDay = 1;
+		Orbit vulcanoOrbit = new Orbit(1000, traslationAnglePerDay);
+
+		vulcanoOrbit.moveDays(90);
+		assertThat(vulcanoOrbit.getCoordinates(), is(new Point2D.Double(0, 1000)));
+		
+		vulcanoOrbit.reset();
+		
+		assertThat(vulcanoOrbit.getCoordinates(), is(new Point2D.Double(1000, 0)));
 	}
 }

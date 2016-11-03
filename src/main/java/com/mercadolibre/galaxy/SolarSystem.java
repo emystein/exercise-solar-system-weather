@@ -11,7 +11,7 @@ public class SolarSystem {
 	private Collection<Orbit> orbits;
 	private Collection<SolarSystemAnalysis> weatherAnalysis = new ArrayList<>();
 	private Collection<SolarSystemObserver> observers = new ArrayList<>();
-	
+
 	public SolarSystem(Collection<Orbit> orbits, Collection<SolarSystemAnalysis> weatherAnalysisPredicates) {
 		this.orbits = orbits;
 		this.weatherAnalysis = weatherAnalysisPredicates;
@@ -21,22 +21,20 @@ public class SolarSystem {
 		this.observers.add(observer);
 	}
 
-	public void advanceDays(int numberOfDays) {
-		for (int day = 1; day <= numberOfDays; day++) {
-			for (Orbit orbit : this.orbits) {
-				orbit.moveDays(1);
-			}
-			this.analyzeWeather(day);
-		}
-	}
-
 	public void goToDay(int day) {
+		this.reset();
+
 		for (Orbit orbit : this.orbits) {
 			orbit.moveDays(day);
 		}
+
 		this.analyzeWeather(day);
 	}
-	
+
+	private void reset() {
+		this.orbits.forEach(orbit -> orbit.reset());
+	}
+
 	private void analyzeWeather(int day) {
 		for (SolarSystemAnalysis analysis : this.weatherAnalysis) {
 			SolarSystemEvent event = analysis.analyze(this.orbits, day);
