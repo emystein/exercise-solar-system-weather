@@ -2,33 +2,33 @@ package com.mercadolibre.galaxy.weather.report;
 
 import java.util.List;
 
-import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.SolarSystemEventType;
+import com.mercadolibre.galaxy.weather.DayWeather;
+import com.mercadolibre.galaxy.weather.Weather;
 
 public class WeatherReportResult {
 
 	private long numberOfDays;
-	private List<SolarSystemEvent> events;
+	private List<DayWeather> dailyWeather;
 	private long maxRainDay;
 	private long droughtCount;
 	private long rainCount;
 	private long optimalPreasureAndTemperatureCount;
 	
-	public WeatherReportResult(long numberOfDays, List<SolarSystemEvent> events, long maxRainDay) {
+	public WeatherReportResult(long numberOfDays, List<DayWeather> dailyWeather, long maxRainDay) {
 		this.numberOfDays = numberOfDays;
-		this.events = events;
+		this.dailyWeather = dailyWeather;
 		this.maxRainDay = maxRainDay;
-		this.droughtCount = countEventsByType(events, SolarSystemEventType.DROUGHT);
-		this.rainCount = countEventsByType(events, SolarSystemEventType.RAIN);
-		this.optimalPreasureAndTemperatureCount = countEventsByType(events, SolarSystemEventType.OPTIMAL_PREASSURE_AND_TEMPERATURE);
+		this.droughtCount = countDayWeatherByType(dailyWeather, Weather.DROUGHT);
+		this.rainCount = countDayWeatherByType(dailyWeather, Weather.RAIN);
+		this.optimalPreasureAndTemperatureCount = countDayWeatherByType(dailyWeather, Weather.OPTIMAL_PREASSURE_AND_TEMPERATURE);
 	}
 
-	private long countEventsByType(List<SolarSystemEvent> events, SolarSystemEventType eventType) {
-		return events.stream().filter(event -> event.getType().equals(eventType)).count();
+	private long countDayWeatherByType(List<DayWeather> dailyWeather, Weather type) {
+		return dailyWeather.stream().filter(dayWeather -> dayWeather.getWeather().equals(type)).count();
 	}
 
-	public List<SolarSystemEvent> getEvents() {
-		return events;
+	public List<DayWeather> getDailyWeather() {
+		return dailyWeather;
 	}
 
 	public long getDroughtCount() {

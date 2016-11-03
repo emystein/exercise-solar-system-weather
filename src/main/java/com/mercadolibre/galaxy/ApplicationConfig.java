@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.google.common.collect.Lists;
-import com.mercadolibre.galaxy.event.SolarSystemEventCollector;
 import com.mercadolibre.galaxy.weather.analysis.SolarSystemAnalysis;
 
 @Configuration
@@ -24,10 +23,8 @@ public class ApplicationConfig {
 
 	@Bean
 	@Scope("request")
-	public SolarSystem solarSystem(Collection<Orbit> orbits, Collection<SolarSystemAnalysis> weatherAnalysisPredicates, SolarSystemEventCollector solarSystemEventCollector) {
-		SolarSystem solarSystem = new SolarSystem(orbits, weatherAnalysisPredicates);
-		solarSystem.registerObserver(solarSystemEventCollector);
-		return solarSystem;
+	public SolarSystem solarSystem(Collection<Orbit> orbits, Collection<SolarSystemAnalysis> weatherAnalysisPredicates) {
+		return new SolarSystem(orbits, weatherAnalysisPredicates);
 	}
 	
 }

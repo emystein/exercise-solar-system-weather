@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mercadolibre.galaxy.SolarSystemTestSupport;
-import com.mercadolibre.galaxy.weather.analysis.MaxRainDayCalculator;
 
 public class WeatherReportTest extends SolarSystemTestSupport {
 	private static final Logger logger = LoggerFactory.getLogger(WeatherReportTest.class);
@@ -30,7 +29,6 @@ public class WeatherReportTest extends SolarSystemTestSupport {
 		
 		logger.debug(reportResult.toString());
 
-		assertThat(reportResult.getEvents().size(), is(eventCollector.getEvents().size()));
 		assertThat(reportResult.getDroughtCount(), is(18L));
 		assertThat(reportResult.getRainCount(), is(1187L));
 		assertThat(reportResult.getMaxRainDay(), is(78L));

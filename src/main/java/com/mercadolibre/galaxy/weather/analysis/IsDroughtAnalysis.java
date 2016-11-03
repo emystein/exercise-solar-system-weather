@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mercadolibre.galaxy.Orbit;
-import com.mercadolibre.galaxy.event.SolarSystemEventType;
+import com.mercadolibre.galaxy.weather.Weather;
 
 /**
  * Matches if orbits are aligned to the sun.
@@ -20,7 +20,7 @@ public class IsDroughtAnalysis extends SolarSystemAnalysis {
 	private static final double ONE_DEGREE_RADIANS_PRECISION = 0.0174d;
 
 	public IsDroughtAnalysis() {
-		super(SolarSystemEventType.DROUGHT);
+		super(Weather.DROUGHT);
 	}
 
 	@Override

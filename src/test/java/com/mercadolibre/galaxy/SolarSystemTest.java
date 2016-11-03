@@ -7,6 +7,9 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import com.mercadolibre.galaxy.weather.DayWeather;
+import com.mercadolibre.galaxy.weather.Weather;
+
 public class SolarSystemTest extends SolarSystemTestSupport {
 	private static final double PRECISION = 0.0174d;
 
@@ -68,6 +71,27 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
-		assertThat(vulcanoOrbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
+		assertThat(vulcanoOrbit.getRadians(), is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
+
+	@Test
+	public void whenAdvancing1DayThenTheWeatherShouldNotBeAvailable() throws Exception {
+		// exercise
+		DayWeather dayWeather = solarSystem.goToDay(1);
+		
+		// verify
+		assertThat(dayWeather.getDay(), is(1));
+		assertThat(dayWeather.getWeather(), is(Weather.NONE));
+	}
+
+	@Test
+	public void whenAdvancing566DaysThenTheWeatherShouldBeRain() throws Exception {
+		// exercise
+		DayWeather dayWeather = solarSystem.goToDay(566);
+		
+		// verify
+		assertThat(dayWeather.getDay(), is(566));
+		assertThat(dayWeather.getWeather(), is(Weather.RAIN));
+	}
+
 }

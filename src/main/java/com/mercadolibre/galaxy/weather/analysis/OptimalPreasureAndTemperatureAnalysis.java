@@ -9,15 +9,14 @@ import org.springframework.stereotype.Component;
 
 import com.mercadolibre.coordinates.PointsHasSameSlopePredicate;
 import com.mercadolibre.galaxy.Orbit;
-import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.SolarSystemEventType;
+import com.mercadolibre.galaxy.weather.Weather;
 
 @Component
 @Scope("request")
 public class OptimalPreasureAndTemperatureAnalysis extends SolarSystemAnalysis {
 
 	public OptimalPreasureAndTemperatureAnalysis() {
-		super(SolarSystemEventType.OPTIMAL_PREASSURE_AND_TEMPERATURE);
+		super(Weather.OPTIMAL_PREASSURE_AND_TEMPERATURE);
 	}
 
 	@Override
@@ -32,7 +31,6 @@ public class OptimalPreasureAndTemperatureAnalysis extends SolarSystemAnalysis {
 
 	public boolean orbitsAreAlignedToTheSun(Collection<Orbit> orbits) {
 		IsDroughtAnalysis droughtAnalysis = new IsDroughtAnalysis();
-		SolarSystemEvent event = droughtAnalysis.analyze(orbits, 1);
-		return event.getType().equals(SolarSystemEventType.DROUGHT);
+		return droughtAnalysis.matches(orbits);
 	}
 }

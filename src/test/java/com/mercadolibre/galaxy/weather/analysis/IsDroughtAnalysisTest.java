@@ -1,7 +1,7 @@
 package com.mercadolibre.galaxy.weather.analysis;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import com.mercadolibre.galaxy.Orbit;
 import com.mercadolibre.galaxy.SolarSystemTestSupport;
-import com.mercadolibre.galaxy.event.SolarSystemEvent;
-import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
 public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 
@@ -28,36 +26,28 @@ public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 	public void positionsIn0RadiansShouldBeAligned() throws Exception {
 		orbits = createPositions(0, 0, 0);
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-		
-		assertDrought(event, 1);
+		assertTrue(analysis.matches(orbits));
 	}
 
 	@Test
 	public void positionsInPiDivided2RadiansShouldBeAligned() throws Exception {
 		orbits = createPositions(Math.PI / 2, Math.PI / 2, Math.PI / 2);
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertDrought(event, 1);
+		assertTrue(analysis.matches(orbits));
 	}
 
 	@Test
 	public void positionsInEquivalent0RadiansShouldBeAligned() throws Exception {
 		orbits = createPositions(0, Math.PI * 2, Math.PI * 2);
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertDrought(event, 1);
+		assertTrue(analysis.matches(orbits));
 	}
 
 	@Test
 	public void positionsInEquivalentPiDivided2RadiansShouldBeAligned() throws Exception {
 		orbits = createPositions(Math.PI / 2, Math.PI / 2, (3 * (Math.PI / 2)));
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertDrought(event, 1);
+		assertTrue(analysis.matches(orbits));
 	}
 
 	@Test
@@ -67,9 +57,7 @@ public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 		double third = Math.toRadians(60 + 360);
 		orbits = createPositions(first, second, third);
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertDrought(event, 1);
+		assertTrue(analysis.matches(orbits));
 	}
 
 	
@@ -77,20 +65,14 @@ public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 	public void onePositionDifferentThanTwoShouldNotBeAligned() throws Exception {
 		orbits = createPositions(0, Math.PI / 2, Math.PI / 2);
 
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertThat(event.getDay(), is(1));
-		assertThat(event.getType(), is(SolarSystemEventType.NO_EVENT));
+		assertFalse(analysis.matches(orbits));
 	}
 
 	@Test
 	public void allPositionsInDifferentRadiansShouldNotBeAligned() throws Exception {
 		orbits = createPositions(0, Math.PI / 2, Math.PI);
 		
-		SolarSystemEvent event = analysis.analyze(orbits, 1);
-
-		assertThat(event.getDay(), is(1));
-		assertThat(event.getType(), is(SolarSystemEventType.NO_EVENT));
+		assertFalse(analysis.matches(orbits));
 	}
 
 	private Collection<Orbit> createPositions(double... radians) {
@@ -101,11 +83,6 @@ public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 		}
 		
 		return orbits;
-	}
-
-	private void assertDrought(SolarSystemEvent event, int day) {
-		assertThat(event.getDay(), is(day));
-		assertThat(event.getType(), is(SolarSystemEventType.DROUGHT));
 	}
 
 }

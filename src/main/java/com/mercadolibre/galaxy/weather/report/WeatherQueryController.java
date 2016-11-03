@@ -6,17 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mercadolibre.galaxy.event.SolarSystemEvent;
+import com.mercadolibre.galaxy.SolarSystem;
+import com.mercadolibre.galaxy.weather.DayWeather;
 
 @RestController
 @Scope("request")
 public class WeatherQueryController {
 
 	@Autowired
-	private WeatherQuery query;
+	private SolarSystem solarSystem;
 	
 	@RequestMapping("/clima")
-	public SolarSystemEvent getWeather(@RequestParam(name="dia", required=true) int day) {
-		return query.getWeather(day);
+	public DayWeather getWeather(@RequestParam(name="dia", required=true) int day) {
+		return solarSystem.goToDay(day);
 	}
 }
