@@ -1,9 +1,14 @@
 package com.mercadolibre.galaxy.weather;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
 public class DayWeather {
 
+	@Id
 	private int day;
 	private Weather weather;
 	@JsonIgnore // in order to avoid showing in the HTTP response
@@ -19,16 +24,34 @@ public class DayWeather {
 		this(day, weather, 0);
 	}
 
+	// only needed by JPA
+	public DayWeather() {
+		this(0, Weather.None, 0);
+	}
+
+	
 	public int getDay() {
 		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
 	}
 
 	public Weather getWeather() {
 		return weather;
 	}
 
+	public void setWeather(Weather weather) {
+		this.weather = weather;
+	}
+
 	public double getValue() {
 		return value;
+	}
+
+	public void setValue(double value) {
+		this.value = value;
 	}
 
 	@Override
