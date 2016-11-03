@@ -42,3 +42,5 @@ mvn spring-boot:run
 ```
 
 Luego HTTP GET <http://localhost:8080/clima?dia=566>
+
+Implementado en [WeatherQueryController](src/main/java/com/mercadolibre/galaxy/weather/report/WeatherQueryController.java).
