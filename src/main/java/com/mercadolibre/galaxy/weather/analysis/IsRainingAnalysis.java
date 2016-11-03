@@ -19,7 +19,7 @@ public class IsRainingAnalysis extends WeatherAnalysis {
 	private double rainArea;
 
 	public IsRainingAnalysis() {
-		super(Weather.RAIN);
+		super(Weather.Rain);
 	}
 
 	@Override

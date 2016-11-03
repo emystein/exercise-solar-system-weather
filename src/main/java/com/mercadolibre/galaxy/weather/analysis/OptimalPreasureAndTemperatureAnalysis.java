@@ -16,7 +16,7 @@ import com.mercadolibre.galaxy.weather.Weather;
 public class OptimalPreasureAndTemperatureAnalysis extends WeatherAnalysis {
 
 	public OptimalPreasureAndTemperatureAnalysis() {
-		super(Weather.OPTIMAL_PREASSURE_AND_TEMPERATURE);
+		super(Weather.OptimalPreasureAndTemperature);
 	}
 
 	@Override

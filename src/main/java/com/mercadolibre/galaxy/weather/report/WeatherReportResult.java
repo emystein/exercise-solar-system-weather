@@ -18,9 +18,9 @@ public class WeatherReportResult {
 		this.numberOfDays = numberOfDays;
 		this.dailyWeather = dailyWeather;
 		this.maxRainDay = maxRainDay;
-		this.droughtCount = countDayWeatherByType(dailyWeather, Weather.DROUGHT);
-		this.rainCount = countDayWeatherByType(dailyWeather, Weather.RAIN);
-		this.optimalPreasureAndTemperatureCount = countDayWeatherByType(dailyWeather, Weather.OPTIMAL_PREASSURE_AND_TEMPERATURE);
+		this.droughtCount = countDayWeatherByType(dailyWeather, Weather.Drought);
+		this.rainCount = countDayWeatherByType(dailyWeather, Weather.Rain);
+		this.optimalPreasureAndTemperatureCount = countDayWeatherByType(dailyWeather, Weather.OptimalPreasureAndTemperature);
 	}
 
 	private long countDayWeatherByType(List<DayWeather> dailyWeather, Weather type) {

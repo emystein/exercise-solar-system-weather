@@ -32,7 +32,7 @@ public class SolarSystem {
 				return new DayWeather(day, analysis.getWeather(), analysis.getValue());
 			}
 		}
-		return new DayWeather(day, Weather.NONE);
+		return new DayWeather(day, Weather.None);
 	}
 
 	private void reset() {

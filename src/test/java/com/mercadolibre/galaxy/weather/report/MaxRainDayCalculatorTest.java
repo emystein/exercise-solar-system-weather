@@ -17,9 +17,9 @@ public class MaxRainDayCalculatorTest {
 	@Test
 	public void calculate() throws Exception {
 		List<DayWeather> list= new ArrayList<>();
-		list.add(new DayWeather(1, Weather.RAIN, 1));
-		list.add(new DayWeather(2, Weather.RAIN, 5));
-		list.add(new DayWeather(3, Weather.RAIN, 1));
+		list.add(new DayWeather(1, Weather.Rain, 1));
+		list.add(new DayWeather(2, Weather.Rain, 5));
+		list.add(new DayWeather(3, Weather.Rain, 1));
 
 		MaxRainDayCalculator calculator = new MaxRainDayCalculator();
 		

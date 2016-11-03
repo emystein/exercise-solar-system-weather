@@ -20,7 +20,7 @@ public class IsDroughtAnalysis extends WeatherAnalysis {
 	private static final double ONE_DEGREE_RADIANS_PRECISION = 0.0174d;
 
 	public IsDroughtAnalysis() {
-		super(Weather.DROUGHT);
+		super(Weather.Drought);
 	}
 
 	@Override

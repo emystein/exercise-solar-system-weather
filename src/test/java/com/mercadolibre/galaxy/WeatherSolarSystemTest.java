@@ -17,7 +17,7 @@ public class WeatherSolarSystemTest extends SolarSystemTestSupport {
 		
 		// verify
 		assertThat(dayWeather.getDay(), is(1));
-		assertThat(dayWeather.getWeather(), is(Weather.NONE));
+		assertThat(dayWeather.getWeather(), is(Weather.None));
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class WeatherSolarSystemTest extends SolarSystemTestSupport {
 		
 		// verify
 		assertThat(dayWeather.getDay(), is(566));
-		assertThat(dayWeather.getWeather(), is(Weather.RAIN));
+		assertThat(dayWeather.getWeather(), is(Weather.Rain));
 	}
 }
 
