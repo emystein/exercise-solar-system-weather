@@ -21,6 +21,15 @@ public class SolarSystem {
 		this.observers.add(observer);
 	}
 
+	public void advanceDays(int numberOfDays) {
+		for (int day = 1; day <= numberOfDays; day++) {
+			for (Orbit orbit : this.orbits) {
+				orbit.moveDays(1);
+			}
+			this.analyzeWeather(day);
+		}
+	}
+
 	public void goToDay(int day) {
 		for (Orbit orbit : this.orbits) {
 			orbit.moveDays(day);
