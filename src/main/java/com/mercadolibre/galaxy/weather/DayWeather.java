@@ -4,12 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class DayWeather {
 
 	@Id
+	@JsonProperty("dia")
 	private int day;
+	@JsonProperty("clima")
 	private Weather weather;
 	@JsonIgnore // in order to avoid showing in the HTTP response
 	private double value;
