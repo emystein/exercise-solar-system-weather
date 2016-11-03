@@ -4,7 +4,6 @@ import java.awt.geom.Point2D;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mercadolibre.coordinates.PointsHasSameSlopePredicate;

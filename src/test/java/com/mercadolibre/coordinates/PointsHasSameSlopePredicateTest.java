@@ -7,8 +7,6 @@ import java.awt.geom.Point2D;
 
 import org.junit.Test;
 
-import com.mercadolibre.coordinates.PointsHasSameSlopePredicate;
-
 public class PointsHasSameSlopePredicateTest {
 	private Point2D origin = createPoint(0, 0);
 

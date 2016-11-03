@@ -31,7 +31,7 @@ public class WeatherSummaryReportTest extends SolarSystemTestSupport {
 
 		assertThat(reportResult.getDroughtCount(), is(18L));
 		assertThat(reportResult.getRainCount(), is(1187L));
-		assertThat(reportResult.getMaxRainDay(), is(78L));
+		assertThat(reportResult.getMaxRainDay(), is(72L));
 		assertThat(reportResult.getOptimalPreasureAndTemperatureCount(), is(24L));
 	}
 

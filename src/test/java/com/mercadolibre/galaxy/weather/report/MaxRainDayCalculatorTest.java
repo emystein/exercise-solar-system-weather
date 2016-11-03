@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.mercadolibre.galaxy.weather.DayWeather;
 import com.mercadolibre.galaxy.weather.Weather;
-import com.mercadolibre.galaxy.weather.report.MaxRainDayCalculator;
 
 public class MaxRainDayCalculatorTest {
 

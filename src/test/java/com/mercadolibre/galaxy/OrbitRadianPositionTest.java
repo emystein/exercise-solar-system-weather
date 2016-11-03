@@ -6,8 +6,6 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.galaxy.Orbit;
-
 public class OrbitRadianPositionTest {
 	double revolution = Math.PI * 2;
 
