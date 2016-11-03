@@ -13,7 +13,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancingOneDayThenFerengiOrbitShouldAdvanceOneDegreeClockwise() throws Exception {
 		// exercise
-		solarSystem.advanceDays(1);
+		solarSystem.goToDay(1);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(-1));
@@ -23,28 +23,17 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing90DaysThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
 		// exercise
-		solarSystem.advanceDays(90);
-		
-		// verify
-		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
-		assertThat(ferengiOrbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
-	}
-
-	@Test
-	public void whenMovingToDay90ThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
-		// exercise
 		solarSystem.goToDay(90);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
 		assertThat(ferengiOrbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
-
 	
 	@Test
 	public void whenAdvancingOneDayThenVulcanoOrbitShouldAdvanceOneDegreeAnticlockwise() throws Exception {
 		// exercise
-		solarSystem.advanceDays(1);
+		solarSystem.goToDay(1);
 
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(5));
@@ -54,7 +43,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing270DaysThenFeringiOrbitShouldBeIn90Degrees() throws Exception {
 		// exercise
-		solarSystem.advanceDays(270);
+		solarSystem.goToDay(270);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
@@ -64,16 +53,10 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing18DaysThenVulcanoOrbitShouldBeIn90Degrees() throws Exception {
 		// exercise
-		solarSystem.advanceDays(18);
+		solarSystem.goToDay(18);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
 		assertThat(vulcanoOrbit.getRadians(), Matchers.is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
 	}
-
-	@Test
-	public void advanceTenYears() throws Exception {
-		solarSystem.advanceDays(3650);
-	}
-
 }

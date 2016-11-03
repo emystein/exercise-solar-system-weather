@@ -39,11 +39,11 @@ public class Orbit {
 			radians = REVOLUTION + radians;
 		}
 
-		if (radians >= REVOLUTION) {
-			this.radians = radians - REVOLUTION;
-		} else {
-			this.radians = radians;
+		while (radians >= REVOLUTION) {
+			radians = radians - REVOLUTION;
 		}
+
+		this.radians = radians;
 	}
 
 	/**
