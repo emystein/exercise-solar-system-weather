@@ -31,4 +31,15 @@ public class DayWeather {
 		return value;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("DayWeather [day=");
+		builder.append(day);
+		builder.append(", weather=");
+		builder.append(weather);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

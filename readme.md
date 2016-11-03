@@ -31,9 +31,13 @@ mvn clean test
 
 Se ejecuta en [WeatherSummaryReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherSummaryReportTest.java).
 
+## Reporte detallado de condiciones climáticas en los próximos 10 años
+
+Se ejecuta en [WeatherDetailedReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherDetailedReportTest.java).
+
 ## Clima para un día en particular
 
-### Cloud
+### Hosteado en Cloud
 
 HTTP GET <http://galaxy-weather.cfapps.io/clima?dia=566>
 

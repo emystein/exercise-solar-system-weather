@@ -20,7 +20,8 @@ public class WeatherSummaryReportTest extends SolarSystemTestSupport {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		report = new WeatherSummaryReport(solarSystem, new MaxRainDayCalculator());
+		WeatherDetailedReport detailedReport = new WeatherDetailedReport(solarSystem);
+		report = new WeatherSummaryReport(detailedReport, new MaxRainDayCalculator());
 	}
 
 	@Test
