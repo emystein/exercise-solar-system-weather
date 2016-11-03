@@ -4,7 +4,6 @@ import java.awt.geom.Point2D;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mercadolibre.coordinates.PointIsInsideTrianglePredicate;
@@ -13,7 +12,6 @@ import com.mercadolibre.galaxy.Orbit;
 import com.mercadolibre.galaxy.weather.Weather;
 
 @Component
-@Scope("request")
 public class IsRainingAnalysis extends WeatherAnalysis {
 
 	private double rainArea;
