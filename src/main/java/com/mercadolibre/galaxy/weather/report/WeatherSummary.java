@@ -5,7 +5,7 @@ import java.util.List;
 import com.mercadolibre.galaxy.weather.DayWeather;
 import com.mercadolibre.galaxy.weather.Weather;
 
-public class WeatherReportResult {
+public class WeatherSummary {
 
 	private long numberOfDays;
 	private List<DayWeather> dailyWeather;
@@ -14,7 +14,7 @@ public class WeatherReportResult {
 	private long rainCount;
 	private long optimalPreasureAndTemperatureCount;
 	
-	public WeatherReportResult(long numberOfDays, List<DayWeather> dailyWeather, long maxRainDay) {
+	public WeatherSummary(long numberOfDays, List<DayWeather> dailyWeather, long maxRainDay) {
 		this.numberOfDays = numberOfDays;
 		this.dailyWeather = dailyWeather;
 		this.maxRainDay = maxRainDay;

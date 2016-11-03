@@ -25,17 +25,19 @@ cf push galaxy-weather -p target/galaxy-weather-0.0.1-SNAPSHOT.jar
 mvn clean test
 ```
 
-## Job de pronóstico de 10 años
+# Consignas
 
-Se ejecuta en [WeatherReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherReportTest).
+## Reporte con resúmen de condiciones climáticas en los próximos 10 años
 
-# Ejecución
+Se ejecuta en [WeatherSummaryReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherSummaryReportTest.java).
 
-## Cloud
+## Clima para un día en particular
+
+### Cloud
 
 HTTP GET <http://galaxy-weather.cfapps.io/clima?dia=566>
 
-## Local
+### Local
 
 ```
 mvn spring-boot:run

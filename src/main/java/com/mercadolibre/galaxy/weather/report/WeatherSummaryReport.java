@@ -9,25 +9,25 @@ import org.slf4j.LoggerFactory;
 import com.mercadolibre.galaxy.SolarSystem;
 import com.mercadolibre.galaxy.weather.DayWeather;
 
-public class WeatherReport {
-	private static final Logger logger = LoggerFactory.getLogger(WeatherReport.class);
+public class WeatherSummaryReport {
+	private static final Logger logger = LoggerFactory.getLogger(WeatherSummaryReport.class);
 
 	private SolarSystem solarSystem;
 	private MaxRainDayCalculator maxRainDayCalculator;
 	
-	public WeatherReport(SolarSystem solarSystem, MaxRainDayCalculator maxRainCalculator) {
+	public WeatherSummaryReport(SolarSystem solarSystem, MaxRainDayCalculator maxRainCalculator) {
 		this.solarSystem = solarSystem;
 		this.maxRainDayCalculator = maxRainCalculator;
 	}
 
-	public WeatherReportResult execute(int numberOfDays) {
+	public WeatherSummary execute(int numberOfDays) {
 		List<DayWeather> dailyWeather = advanceDays(numberOfDays);
 		
 		dailyWeather.forEach(dayWeather -> logger.trace("Day: {}, Weather: {}", dayWeather.getDay(), dayWeather.getWeather()));
 		
 		int maxRain = maxRainDayCalculator.calculate(dailyWeather);
 		
-		return new WeatherReportResult(numberOfDays, dailyWeather, maxRain);
+		return new WeatherSummary(numberOfDays, dailyWeather, maxRain);
 	}
 
 	public List<DayWeather> advanceDays(int numberOfDays) {

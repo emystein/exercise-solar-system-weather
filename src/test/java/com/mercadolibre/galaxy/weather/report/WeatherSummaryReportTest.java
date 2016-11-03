@@ -10,22 +10,22 @@ import org.slf4j.LoggerFactory;
 
 import com.mercadolibre.galaxy.SolarSystemTestSupport;
 
-public class WeatherReportTest extends SolarSystemTestSupport {
-	private static final Logger logger = LoggerFactory.getLogger(WeatherReportTest.class);
+public class WeatherSummaryReportTest extends SolarSystemTestSupport {
+	private static final Logger logger = LoggerFactory.getLogger(WeatherSummaryReportTest.class);
 	
 	private static final int TEN_YEARS_IN_DAYS = 3650;
 	
-	private WeatherReport report;
+	private WeatherSummaryReport report;
 
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		report = new WeatherReport(solarSystem, new MaxRainDayCalculator());
+		report = new WeatherSummaryReport(solarSystem, new MaxRainDayCalculator());
 	}
 
 	@Test
 	public void report() throws Exception {
-		WeatherReportResult reportResult = report.execute(TEN_YEARS_IN_DAYS);
+		WeatherSummary reportResult = report.execute(TEN_YEARS_IN_DAYS);
 		
 		logger.debug(reportResult.toString());
 
