@@ -34,7 +34,7 @@ public class WeatherReport {
 		List<DayWeather> dailyWeather = new ArrayList<>();
 		
 		for (int day = 1; day <= numberOfDays; day++) {
-			dailyWeather.add(solarSystem.goToDay(day));
+			dailyWeather.add(solarSystem.getWeatherForDay(day));
 		}
 		
 		return dailyWeather;

@@ -13,7 +13,7 @@ import com.mercadolibre.galaxy.weather.Weather;
 
 @Component
 @Scope("request")
-public class OptimalPreasureAndTemperatureAnalysis extends SolarSystemAnalysis {
+public class OptimalPreasureAndTemperatureAnalysis extends WeatherAnalysis {
 
 	public OptimalPreasureAndTemperatureAnalysis() {
 		super(Weather.OPTIMAL_PREASSURE_AND_TEMPERATURE);

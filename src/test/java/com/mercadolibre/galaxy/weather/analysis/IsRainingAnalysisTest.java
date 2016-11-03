@@ -9,7 +9,7 @@ import com.mercadolibre.galaxy.SolarSystemTestSupport;
 
 public class IsRainingAnalysisTest extends SolarSystemTestSupport {
 	
-	private SolarSystemAnalysis analysis;
+	private WeatherAnalysis analysis;
 
 	@Before
 	public void setUp() throws Exception {

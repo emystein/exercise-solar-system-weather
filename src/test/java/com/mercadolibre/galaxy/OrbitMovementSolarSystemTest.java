@@ -7,16 +7,13 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.mercadolibre.galaxy.weather.DayWeather;
-import com.mercadolibre.galaxy.weather.Weather;
-
-public class SolarSystemTest extends SolarSystemTestSupport {
+public class OrbitMovementSolarSystemTest extends SolarSystemTestSupport {
 	private static final double PRECISION = 0.0174d;
 
 	@Test
 	public void whenAdvancingOneDayThenFerengiOrbitShouldAdvanceOneDegreeClockwise() throws Exception {
 		// exercise
-		solarSystem.goToDay(1);
+		solarSystem.getWeatherForDay(1);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(-1));
@@ -26,7 +23,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing90DaysThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
 		// exercise
-		solarSystem.goToDay(90);
+		solarSystem.getWeatherForDay(90);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
@@ -36,7 +33,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenMovingToDay90ThenFeringiOrbitShouldBeInMinus90Degrees() throws Exception {
 		// exercise
-		solarSystem.goToDay(90);
+		solarSystem.getWeatherForDay(90);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(-(Math.PI / 2));
@@ -47,7 +44,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancingOneDayThenVulcanoOrbitShouldAdvanceOneDegreeAnticlockwise() throws Exception {
 		// exercise
-		solarSystem.goToDay(1);
+		solarSystem.getWeatherForDay(1);
 
 		// verify
 		Orbit expectedPosition = new Orbit(Math.toRadians(5));
@@ -57,7 +54,7 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing270DaysThenFeringiOrbitShouldBeIn90Degrees() throws Exception {
 		// exercise
-		solarSystem.goToDay(270);
+		solarSystem.getWeatherForDay(270);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
@@ -67,31 +64,11 @@ public class SolarSystemTest extends SolarSystemTestSupport {
 	@Test
 	public void whenAdvancing18DaysThenVulcanoOrbitShouldBeIn90Degrees() throws Exception {
 		// exercise
-		solarSystem.goToDay(18);
+		solarSystem.getWeatherForDay(18);
 		
 		// verify
 		Orbit expectedPosition = new Orbit(Math.PI / 2);
 		assertThat(vulcanoOrbit.getRadians(), is(Matchers.closeTo(expectedPosition.getRadians(), PRECISION)));
-	}
-
-	@Test
-	public void whenAdvancing1DayThenTheWeatherShouldNotBeAvailable() throws Exception {
-		// exercise
-		DayWeather dayWeather = solarSystem.goToDay(1);
-		
-		// verify
-		assertThat(dayWeather.getDay(), is(1));
-		assertThat(dayWeather.getWeather(), is(Weather.NONE));
-	}
-
-	@Test
-	public void whenAdvancing566DaysThenTheWeatherShouldBeRain() throws Exception {
-		// exercise
-		DayWeather dayWeather = solarSystem.goToDay(566);
-		
-		// verify
-		assertThat(dayWeather.getDay(), is(566));
-		assertThat(dayWeather.getWeather(), is(Weather.RAIN));
 	}
 
 }

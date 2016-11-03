@@ -15,7 +15,7 @@ import com.mercadolibre.galaxy.weather.Weather;
  */
 @Component
 @Scope("request")
-public class IsDroughtAnalysis extends SolarSystemAnalysis {
+public class IsDroughtAnalysis extends WeatherAnalysis {
 	// precision of 1 degree = 0.0174 rads
 	private static final double ONE_DEGREE_RADIANS_PRECISION = 0.0174d;
 

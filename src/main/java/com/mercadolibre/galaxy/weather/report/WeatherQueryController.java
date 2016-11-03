@@ -17,7 +17,7 @@ public class WeatherQueryController {
 	private SolarSystem solarSystem;
 	
 	@RequestMapping("/clima")
-	public DayWeather getWeather(@RequestParam(name="dia", required=true) int day) {
-		return solarSystem.goToDay(day);
+	public DayWeather getWeatherForDay(@RequestParam(name="dia", required=true) int day) {
+		return solarSystem.getWeatherForDay(day);
 	}
 }

@@ -5,11 +5,11 @@ import java.util.Collection;
 import com.mercadolibre.galaxy.Orbit;
 import com.mercadolibre.galaxy.weather.Weather;
 
-public abstract class SolarSystemAnalysis {
+public abstract class WeatherAnalysis {
 
 	private Weather weather;
 
-	public SolarSystemAnalysis(Weather weather) {
+	public WeatherAnalysis(Weather weather) {
 		this.weather = weather;
 	}
 	

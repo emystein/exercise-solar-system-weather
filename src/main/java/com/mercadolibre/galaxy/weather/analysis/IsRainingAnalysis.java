@@ -14,7 +14,7 @@ import com.mercadolibre.galaxy.weather.Weather;
 
 @Component
 @Scope("request")
-public class IsRainingAnalysis extends SolarSystemAnalysis {
+public class IsRainingAnalysis extends WeatherAnalysis {
 
 	private double rainArea;
 

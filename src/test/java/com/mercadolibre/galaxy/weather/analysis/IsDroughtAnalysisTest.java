@@ -14,7 +14,7 @@ import com.mercadolibre.galaxy.SolarSystemTestSupport;
 
 public class IsDroughtAnalysisTest extends SolarSystemTestSupport {
 
-	private SolarSystemAnalysis analysis;
+	private WeatherAnalysis analysis;
 
 	@Before
 	public void setUp() throws Exception {
