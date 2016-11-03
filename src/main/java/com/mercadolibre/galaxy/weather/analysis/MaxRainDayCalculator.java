@@ -6,9 +6,9 @@ import com.mercadolibre.galaxy.event.SolarSystemEvent;
 
 public class MaxRainDayCalculator {
 
-	public double calculate(List<SolarSystemEvent> rainEvents) {
+	public int calculate(List<SolarSystemEvent> rainEvents) {
 		double maxRain = 0;
-		double maxRainDay = 0;
+		int maxRainDay = 0;
 
 		for (SolarSystemEvent event : rainEvents) {
 			if (event.getValue() > maxRain) {

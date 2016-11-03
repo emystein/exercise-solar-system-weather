@@ -24,7 +24,7 @@ public class WeatherReport {
 		
 		List<SolarSystemEvent> events = eventCollector.getEvents();
 		
-		double maxRain = maxRainDayCalculator.calculate(events);
+		int maxRain = maxRainDayCalculator.calculate(events);
 		
 		return new WeatherReportResult(numberOfDays, events, maxRain);
 	}

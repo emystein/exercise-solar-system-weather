@@ -31,6 +31,10 @@ public class WeatherReportTest extends SolarSystemTestSupport {
 		logger.debug(reportResult.toString());
 
 		assertThat(reportResult.getEvents().size(), is(eventCollector.getEvents().size()));
+		assertThat(reportResult.getDroughtCount(), is(18L));
+		assertThat(reportResult.getRainCount(), is(1187L));
+		assertThat(reportResult.getMaxRainDay(), is(78L));
+		assertThat(reportResult.getOptimalPreasureAndTemperatureCount(), is(24L));
 	}
 
 }
