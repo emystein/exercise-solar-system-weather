@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.mercadolibre.coordinates.PointsHasSameSlopePredicate;
 import com.mercadolibre.galaxy.Orbit;
+import com.mercadolibre.galaxy.event.SolarSystemEvent;
 import com.mercadolibre.galaxy.event.SolarSystemEventType;
 
 @Component
@@ -30,6 +31,8 @@ public class OptimalPreasureAndTemperatureAnalysis extends SolarSystemAnalysis {
 	}
 
 	public boolean orbitsAreAlignedToTheSun(Collection<Orbit> orbits) {
-		return OrbitsAlignedToTheSunPredicate.matches(orbits);
+		IsDroughtAnalysis droughtAnalysis = new IsDroughtAnalysis();
+		SolarSystemEvent event = droughtAnalysis.analyze(orbits, 1);
+		return event.getType().equals(SolarSystemEventType.DROUGHT);
 	}
 }
