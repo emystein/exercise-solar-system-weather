@@ -11,6 +11,7 @@ public enum Weather {
 		this.value = value;
 	}
 
+	// see http://www.baeldung.com/jackson-serialize-enums
 	@JsonValue
 	public String getValue() {
 		return value;
