@@ -9,8 +9,8 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.mercadolibre.test</groupId>
-	<artifactId>galaxy-weather</artifactId>
+	<groupId>com.kamikaze.exercise</groupId>
+	<artifactId>solar-system-weather</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

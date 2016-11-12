@@ -1,6 +1,6 @@
 # Introducción
 
-Solución al ejercicio planteado en PDF adjunto [Examen ML - Nivel 2.pdf](Examen ML - Nivel 2.pdf).
+Solución al ejercicio planteado en PDF adjunto [enunciado.pdf](enunciado.pdf).
 
 # Requerimientos para compilar el proyecto
 
@@ -11,7 +11,7 @@ Solución al ejercicio planteado en PDF adjunto [Examen ML - Nivel 2.pdf](Examen
 
 ## Reporte con resúmen de condiciones climáticas en los próximos 10 años
 
-Ver [WeatherSummaryReport](src/main/java/com/mercadolibre/galaxy/weather/report/WeatherSummaryReport.java) y  [WeatherSummaryReportTest](src/test/java/com/mercadolibre/galaxy/weather/report/WeatherSummaryReportTest.java).
+Ver [WeatherSummaryReport](src/main/java/com/kamikaze/solarsystem/weather/report/WeatherSummaryReport.java) y  [WeatherSummaryReportTest](src/test/java/com/kamikaze/solarsystem/weather/report/WeatherSummaryReportTest.java).
 
 
 ## Bonus
@@ -24,25 +24,19 @@ Aplicación Spring Boot que utiliza los siguientes componentes:
 
 ### Job para predicción del clima por 10 años
 
-Ver [WeatherPredictionJob](src/main/java/com/mercadolibre/galaxy/weather/persistence/WeatherPredictionJob.java)
+Ver [WeatherPredictionJob](src/main/java/com/kamikaze/solarsystem/weather/persistence/WeatherPredictionJob.java)
 
 
 #### Ejecución del job en startup de la aplicación
 
-Ver [WeatherPredictionJobStartupRunner](src/main/java/com/mercadolibre/galaxy/WeatherPredictionJobStartupRunner.java)
+Ver [WeatherPredictionJobStartupRunner](src/main/java/com/kamikaze/solarsystem/WeatherPredictionJobStartupRunner.java)
 
 
 ### API REST para consultar el clima para un día en particular
 
-Ver [WeatherQueryController](src/main/java/com/mercadolibre/galaxy/weather/report/WeatherQueryController.java).
+Ver [WeatherQueryController](src/main/java/com/kamikaze/solarsystem/weather/report/WeatherQueryController.java).
 
-#### Cloud Hosting
-
-El servicio REST está hosteado en la URL: <http://galaxy-weather.cfapps.io/clima>
-
-Request de ejemplo: <http://galaxy-weather.cfapps.io/clima?dia=566>
-
-#### Ejecución Local
+#### Ejecución
 
 Para ejecutar el servicio REST localmente:
 
