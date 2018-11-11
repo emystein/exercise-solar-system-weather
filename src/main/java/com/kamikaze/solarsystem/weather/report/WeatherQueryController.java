@@ -20,7 +20,7 @@ public class WeatherQueryController {
 	
 	@RequestMapping("/clima")
 	public DayWeather getWeatherForDay(@RequestParam(name="dia", required=true) int day) {
-		DayWeather dayWeather = weatherRepository.findOne(day);
+		DayWeather dayWeather = weatherRepository.getOne(day);
 
 		if (dayWeather == null) {
 			dayWeather = solarSystem.getWeatherForDay(day);

@@ -24,7 +24,7 @@ public class DayWeatherRepositoryIT {
 	private DayWeatherRepository repository;
 	
 	@Test
-	public void persist() throws Exception {
+	public void persist() {
 		DayWeather dayWeather = new DayWeather(1, Weather.None);
 		
 		repository.save(dayWeather);
@@ -37,12 +37,12 @@ public class DayWeatherRepositoryIT {
 	}
 	
 	@Test
-	public void findByDay() throws Exception {
+	public void findByDay() {
 		DayWeather dayWeather = new DayWeather(1, Weather.None);
 		
 		repository.save(dayWeather);
 		
-		DayWeather retrievedWeather = repository.findOne(1);
+		DayWeather retrievedWeather = repository.getOne(1);
 
 		// verify
 		assertDayWeather(retrievedWeather, dayWeather);
